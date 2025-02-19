@@ -1,198 +1,272 @@
 <!DOCTYPE html>
 <html lang="km">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ចុះឈ្មោះសិក្សា - សាកលវិទ្យាល័យភូមិន្ទភ្នំពេញ</title>
-    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&family=Moul&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="register.css">
-</head>
-<body>
+    <link href="./images/rupp_logo.png" rel="stylesheet" />
+    <link rel="stylesheet" href="register.css" />
+  </head>
+  <body>
     <header>
-        <div class="header-container">
-            <div class="logo">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7WBqHm1L7vRejJlaKiuygze2_XYGuLpTp2g&s" alt="រូបសញ្ញា RUPP">
-                <div class="logo-text">
-                    <h1>សាកលវិទ្យាល័យភូមិន្ទភ្នំពេញ</h1>
-                    <p>នាយកដ្ឋានបច្ចេកវិទ្យាព័ត៌មាន</p>
-                </div>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="index.html">ទំព័រដើម</a></li>
-                    <li><a href="index.html#about">អំពីយើង</a></li>
-                    <li><a href="index.html#services">សេវាកម្ម</a></li>
-                    <li><a href="index.html#team">ក្រុមការងាររបស់យើង</a></li>
-                    <li><a href="index.html#contact">ទំនាក់ទំនង</a></li>
-                </ul>
-            </nav>
+      <div class="header-container">
+        <div class="logo">
+          <img src="./images/rupp_logo.png" alt="រូបសញ្ញា RUPP" />
+          <div class="logo-text">
+            <h1>សាកលវិទ្យាល័យភូមិន្ទភ្នំពេញ</h1>
+            <p>នាយកដ្ឋានបច្ចេកវិទ្យាព័ត៌មាន</p>
+          </div>
         </div>
+        <nav>
+          <ul>
+            <li><a href="index.html">ទំព័រដើម</a></li>
+            <li><a href="index.html#about">អំពីយើង</a></li>
+            <li><a href="index.html#services">សេវាកម្ម</a></li>
+            <li><a href="index.html#team">ក្រុមការងាររបស់យើង</a></li>
+            <li><a href="index.html#contact">ទំនាក់ទំនង</a></li>
+          </ul>
+        </nav>
+      </div>
     </header>
 
-    <main class="registration-page">
+    <main>
+      <section class="page-title">
         <div class="container">
-            <div class="section-title">
-                <h2>ទម្រង់ចុះឈ្មោះសិក្សា</h2>
+          <h2>ទម្រង់ចុះឈ្មោះសិក្សា</h2>
+          <p>សូមបំពេញព័ត៌មានដោយមេត្តាភាពនិងភាពស៊ីជម្រៅ</p>
+        </div>
+      </section>
+
+      <section class="register-section">
+        <div class="container">
+          <div class="registration-grid">
+            <div class="register-info">
+              <div class="info-card">
+                <h3>ព័ត៌មាននៃការចុះឈ្មោះ</h3>
+                <ul class="benefits-list">
+                  <li>
+                    <span class="icon">📝</span>
+                    <span>សូមបំពេញព័ត៌មាន​ឱ្យបានត្រឹមត្រូវ</span>
+                  </li>
+                  <li>
+                    <span class="icon">✅</span>
+                    <span>ផ្ទៀងផ្ទាត់ព័ត៌មាន​មុននឹងដាក់ស្នើ</span>
+                  </li>
+                  <li>
+                    <span class="icon">🔒</span>
+                    <span>ធានាសុវត្ថិភាពទិន្នន័យផ្ទាល់ខ្លួន</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="support-contact">
+                <h4>ត្រូវការជំនួយ?</h4>
+                <p>ទាក់ទងមកកាន់នាយកដ្ឋាន៖</p>
+                <p>📞 +៨៥៥ ២៣ ៤៥៦ ៧៨៩</p>
+                <p>✉️ support@rupp.edu.kh</p>
+              </div>
             </div>
 
-            <form class="registration-form" enctype="multipart/form-data">
+            <div class="register-form-container">
+              <form id="registrationForm" class="register-form">
                 <div class="form-section">
-                    <h3>ព័ត៌មានផ្ទាល់ខ្លួន</h3>
-                    
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="first-name">នាមខ្លួន</label>
-                            <input type="text" id="first-name" name="first-name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="last-name">នាមត្រកូល</label>
-                            <input type="text" id="last-name" name="last-name" required>
-                        </div>
+                  <h4>ព័ត៌មានផ្ទាល់ខ្លួន</h4>
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="latin-name">ឈ្មោះជាអក្សរឡាតាំង</label>
+                      <input
+                        type="text"
+                        id="latin-name"
+                        name="latin-name"
+                        required
+                      />
                     </div>
+                    <div class="form-group">
+                      <label for="khmer-name">ឈ្មោះជាភាសាខ្មែរ</label>
+                      <input
+                        type="text"
+                        id="khmer-name"
+                        name="khmer-name"
+                        required
+                      />
+                    </div>
+                  </div>
 
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="date-of-birth">ថ្ងៃ ខែ ឆ្នាំកំណើត</label>
-                            <input type="date" id="date-of-birth" name="date-of-birth" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="gender">ភេទ</label>
-                            <select id="gender" name="gender" required>
-                                <option value="">ជ្រើសរើសភេទ</option>
-                                <option value="male">ប្រុស</option>
-                                <option value="female">ស្រី</option>
-                                <option value="other">ផ្សេងៗ</option>
-                            </select>
-                        </div>
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="father-name">ឈ្មោះឪពុក</label>
+                      <input
+                        type="text"
+                        id="father-name"
+                        name="father-name"
+                        required
+                      />
                     </div>
+                    <div class="form-group">
+                      <label for="mother-name">ឈ្មោះម្តាយ</label>
+                      <input
+                        type="text"
+                        id="mother-name"
+                        name="mother-name"
+                        required
+                      />
+                    </div>
+                  </div>
 
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="father-name">ឈ្មោះឪពុក</label>
-                            <input type="text" id="father-name" name="father-name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="mother-name">ឈ្មោះម្តាយ</label>
-                            <input type="text" id="mother-name" name="mother-name" required>
-                        </div>
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="birth-date">ថ្ងៃខែឆ្នាំកំណើត</label>
+                      <input
+                        type="date"
+                        id="birth-date"
+                        name="birth-date"
+                        required
+                      />
                     </div>
+                    <div class="form-group">
+                      <label for="place-of-birth">ទីកន្លែងកំណើត</label>
+                      <input
+                        type="text"
+                        id="place-of-birth"
+                        name="place-of-birth"
+                        required
+                      />
+                    </div>
+                  </div>
                 </div>
 
                 <div class="form-section">
-                    <h3>ព័ត៌មានទំនាក់ទំនង</h3>
-                    
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="phone">លេខទូរស័ព្ទ</label>
-                            <input type="tel" id="phone" name="phone" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">អ៊ីមែល</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
+                  <h4>ព័ត៌មានទំនាក់ទំនង</h4>
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="email">អ៊ីមែល (ស្រេចចិត្ត)</label>
+                      <input type="email" id="email" name="email" />
                     </div>
-
-                    <div class="form-row">
-                        <div class="form-group full-width">
-                            <label for="address">អាសយដ្ឋាន</label>
-                            <textarea id="address" name="address" required></textarea>
-                        </div>
+                    <div class="form-group">
+                      <label for="phone">លេខទូរស័ព្ទ</label>
+                      <input type="tel" id="phone" name="phone" required />
                     </div>
+                  </div>
                 </div>
 
                 <div class="form-section">
-                    <h3>ឯកសារសិក្សា</h3>
-                    
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="grade-12-certificate">វិញ្ញាបនបត្រថ្នាក់ទី១២</label>
-                            <input type="file" id="grade-12-certificate" name="grade-12-certificate" accept=".pdf,.jpg,.jpeg,.png" required>
-                            <small>សូមអັپឡូតឯកសារជាPDF ឬរូបភាពប៉ុណ្ណោះ</small>
-                        </div>
-                        <div class="form-group">
-                            <label for="academic-year">ឆ្នាំសិក្សា</label>
-                            <select id="academic-year" name="academic-year" required>
-                                <option value="">ជ្រើសរើសឆ្នាំសិក្សា</option>
-                                <option value="2024">២០២៤</option>
-                                <option value="2025">២០២៥</option>
-                                <option value="2026">២០២៦</option>
-                            </select>
-                        </div>
-                    </div>
+                  <h4>ព័ត៌មានសិក្សា</h4>
+                  <div class="form-group">
+                    <label for="major">ជំនាញ</label>
+                    <select id="major" name="major" required>
+                      <option value="">ជ្រើសរើសជំនាញ</option>
+                      <option value="it">បច្ចេកវិទ្យាព័ត៌មាន</option>
+                      <option value="computer">វិទ្យាសាស្ត្រកុំព្យូទ័រ</option>
+                      <option value="network">បណ្តាញ</option>
+                      <option value="software">វិស្វកម្មកម្មវិធី</option>
+                      <option value="other">ផ្សេងៗ</option>
+                    </select>
+                  </div>
                 </div>
 
                 <div class="form-section">
-                    <h3>ជ្រើសរើសជំនាញ</h3>
-                    
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="department">នាយកដ្ឋាន</label>
-                            <select id="department" name="department" required>
-                                <option value="">ជ្រើសរើសនាយកដ្ឋាន</option>
-                                <option value="it">បច្ចេកវិទ្យាព័ត៌មាន</option>
-                                <option value="computer">វិទ្យាសាស្ត្រកុំព្យូទ័រ</option>
-                                <option value="network">បណ្តាញ</option>
-                                <option value="other">ផ្សេងៗ</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="program">កម្មវិធីសិក្សា</label>
-                            <select id="program" name="program" required>
-                                <option value="">ជ្រើសរើសកម្មវិធីសិក្សា</option>
-                                <option value="bachelor">សញ្ញាបត្រ</option>
-                                <option value="master">អនុបណ្ឌិត</option>
-                                <option value="phd">បណ្ឌិត</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-section">
-                    <div class="form-group checkbox-group">
-                        <input type="checkbox" id="terms" name="terms" required>
-                        <label for="terms">
-                            ខ្ញុំយល់ព្រមតាម <a href="#">លក្ខខណ្ឌ</a> និង <a href="#">គោលការណ៍ឯកជនភាព</a>
-                        </label>
-                    </div>
+                  <div class="form-group checkbox-group">
+                    <input type="checkbox" id="terms" name="terms" required />
+                    <label for="terms">
+                      ខ្ញុំយល់ព្រមតាម <a href="#">លក្ខខណ្ឌប្រើប្រាស់</a>
+                    </label>
+                  </div>
                 </div>
 
                 <div class="form-actions">
-                    <button type="submit" class="submit-btn">ចុះឈ្មោះ</button>
+                  <button
+                    type="button"
+                    class="button button-secondary"
+                    onclick="window.location.href='index.html'"
+                  >
+                    បោះបង់
+                  </button>
+                  <button type="submit" class="button button-primary">
+                    ចុះឈ្មោះ
+                  </button>
                 </div>
-            </form>
+              </form>
+            </div>
+          </div>
         </div>
+      </section>
     </main>
 
     <footer>
-        <div class="footer-container">
-            <div class="footer-column">
-                <h3>តំណភ្ជាប់រហ័ស</h3>
-                <ul>
-                    <li><a href="index.html">ទំព័រដើម</a></li>
-                    <li><a href="index.html#about">អំពីយើង</a></li>
-                    <li><a href="index.html#services">សេវាកម្ម</a></li>
-                    <li><a href="index.html#team">ក្រុមការងាររបស់យើង</a></li>
-                    <li><a href="index.html#contact">ទំនាក់ទំនង</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>ធនធាន</h3>
-                <ul>
-                    <li><a href="#">ទាញយកឯកសារ</a></li>
-                    <li><a href="#">ប្រព័ន្ធគ្រប់គ្រងការសិក្សា</a></li>
-                    <li><a href="#">សំណួរពេញនិយម</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>ទំនាក់ទំនង</h3>
-                <p>📍 មហាវិថីសហព័ន្ធរុស្ស៊ី, ភ្នំពេញ</p>
-                <p>📞 +(៨៥៥) ១២៣ ៤៥៦</p>
-                <p>✉️ contact@rupp.edu.kh</p>
-            </div>
+      <div class="footer-container">
+        <div class="footer-logo">
+          <img src="./images/rupp_logo.png" alt="រូបសញ្ញា RUPP" />
+          <p>នាយកដ្ឋានបច្ចេកវិទ្យាព័ត៌មាន</p>
+          <p>សាកលវិទ្យាល័យភូមិន្ទភ្នំពេញ</p>
         </div>
-        <div class="copyright">
-            <p>&copy; ២០២៥ សាកលវិទ្យាល័យភូមិន្ទភ្នំពេញ។ រក្សាសិទ្ធិគ្រប់យ៉ាង។</p>
+        <div class="footer-links">
+          <div class="footer-column">
+            <h3>តំណភ្ជាប់រហ័ស</h3>
+            <ul>
+              <li><a href="index.html">ទំព័រដើម</a></li>
+              <li><a href="index.html#about">អំពីយើង</a></li>
+              <li><a href="index.html#services">សេវាកម្ម</a></li>
+              <li><a href="index.html#team">ក្រុមការងាររបស់យើង</a></li>
+              <li><a href="index.html#contact">ទំនាក់ទំនង</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3>ប្រព័ន្ធគ្រប់គ្រង</h3>
+            <ul>
+              <li><a href="#">សិក្សាតាមប្រព័ន្ធ</a></li>
+              <li><a href="#">ធនធានបណ្ណាល័យ</a></li>
+              <li><a href="#">សេវាកម្មសិស្ស</a></li>
+              <li><a href="#">ការបោះពុម្ភឯកសារ</a></li>
+            </ul>
+          </div>
         </div>
+        <div class="footer-contact">
+          <h3>ទំនាក់ទំនង</h3>
+          <p>📍 មហាវិថីសហព័ន្ធរុស្ស៊ី, ភ្នំពេញ</p>
+          <p>📞 +(៨៥៥) ១៧៩ ៤៧៨ ៨៨៨</p>
+          <p>✉️ contact@rupp.edu.kh</p>
+          <div class="social-links">
+            <a href="#" class="social-link">FB</a>
+            <a href="#" class="social-link">TW</a>
+            <a href="#" class="social-link">IG</a>
+            <a href="#" class="social-link">LI</a>
+          </div>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>&copy; ២០២៥ សាកលវិទ្យាល័យភូមិន្ទភ្នំពេញ។ រក្សាសិទ្ធិគ្រប់យ៉ាង។</p>
+      </div>
     </footer>
-</body>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const registrationForm = document.getElementById("registrationForm");
+        registrationForm.addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          // Basic validation
+          const requiredFields =
+            registrationForm.querySelectorAll("[required]");
+          let isValid = true;
+
+          requiredFields.forEach((field) => {
+            if (!field.value.trim()) {
+              isValid = false;
+              field.classList.add("error");
+            } else {
+              field.classList.remove("error");
+            }
+          });
+
+          if (isValid) {
+            // Simulate form submission
+            alert("ការចុះឈ្មោះបានសម្រេច! សូមរង់ចាំការផ្ទៀងផ្ទាត់។");
+            this.reset();
+          } else {
+            alert("សូមបំពេញទិន្នន័យឱ្យគ្រប់។");
+          }
+        });
+      });
+    </script>
+  </body>
 </html>

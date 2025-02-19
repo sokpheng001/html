@@ -7,8 +7,9 @@
   --light-gray: #f7f7f7;
   --white: #ffffff;
   --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  --khmer-font: 'Kantumruy Pro', 'Battambang', 'Khmer OS', 'Khmer OS System', sans-serif;
-  --heading-font: 'Moul', var(--khmer-font);
+  --khmer-font: "Kantumruy Pro", "Battambang", "Khmer OS", "Khmer OS System",
+    sans-serif;
+  --heading-font: "Moul", var(--khmer-font);
 }
 
 * {
@@ -87,7 +88,7 @@ nav ul li a:hover {
 }
 
 nav ul li a::after {
-  content: '';
+  content: "";
   position: absolute;
   width: 0;
   height: 2px;
@@ -111,7 +112,8 @@ nav ul li a.active::after {
 
 /* Hero */
 .hero {
-  background: linear-gradient(rgba(10, 77, 140, 0.8), rgba(10, 77, 140, 0.9)), url('/api/placeholder/1200/400') center/cover no-repeat;
+  background: linear-gradient(rgba(10, 77, 140, 0.8), rgba(10, 77, 140, 0.9)),
+    url("/api/placeholder/1200/400") center/cover no-repeat;
   color: var(--white);
   padding: 5rem 2rem;
   text-align: center;
@@ -192,7 +194,7 @@ main {
 }
 
 .section-title h2::after {
-  content: '';
+  content: "";
   position: absolute;
   width: 60%;
   height: 3px;
@@ -421,7 +423,6 @@ main {
   border: 1px solid #ddd;
   border-radius: 4px;
   font-size: 1rem;
-
 }
 
 .form-group textarea {
@@ -471,7 +472,7 @@ footer {
 }
 
 .footer-column h3::after {
-  content: '';
+  content: "";
   position: absolute;
   width: 50%;
   height: 2px;
@@ -561,7 +562,7 @@ footer {
   .hero p {
     font-size: 1rem;
   }
-  
+
   .button-group {
     flex-direction: column;
     max-width: 280px;
@@ -582,23 +583,23 @@ footer {
   .services {
     grid-template-columns: 1fr;
   }
-  
+
   .team-grid {
     grid-template-columns: 1fr;
     max-width: 320px;
     margin: 0 auto;
   }
-  
+
   .footer-container {
     grid-template-columns: 1fr;
     text-align: center;
   }
-  
+
   .footer-column h3::after {
     left: 50%;
     transform: translateX(-50%);
   }
-  
+
   .social-links {
     justify-content: center;
   }
