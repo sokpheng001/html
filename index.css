@@ -11,6 +11,14 @@
     sans-serif;
   --heading-font: "Moul", var(--khmer-font);
 }
+/* Kantumruy Pro Regular Font */
+@font-face {
+  font-family: "Kantumruy Pro";
+  src: url('./fonts/KantumruyPro-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 
 * {
   margin: 0;

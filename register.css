@@ -22,6 +22,14 @@
   --radius: 8px;
   --radius-lg: 12px;
 }
+/* Kantumruy Pro Regular Font */
+@font-face {
+  font-family: "Kantumruy Pro";
+  src: url('./fonts/KantumruyPro-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 
 /* Reset & Base Styles */
 * {
