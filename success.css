@@ -1,0 +1,205 @@
+/* Variables */
+:root {
+  --primary-color: #0a4d8c;
+  --primary-light: #2a6faf;
+  --primary-dark: #063669;
+  --secondary-color: #e6f2ff;
+  --accent-color: #ff6b35;
+  --accent-light: #ff8c5a;
+  --accent-dark: #e54e1b;
+  --text-color: #333333;
+  --text-light: #666666;
+  --light-gray: #f7f7f7;
+  --medium-gray: #e0e0e0;
+  --white: #ffffff;
+  --shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  --shadow-light: 0 2px 4px rgba(0, 0, 0, 0.05);
+  --shadow-strong: 0 8px 16px rgba(0, 0, 0, 0.12);
+  --khmer-font: "Kantumruy Pro", "Battambang", "Khmer OS", "Khmer OS System",
+    sans-serif;
+  --heading-font: "Moul", var(--khmer-font);
+  --transition: all 0.3s ease;
+  --radius: 8px;
+  --radius-lg: 12px;
+}
+
+/* Kantumruy Pro Regular Font */
+@font-face {
+  font-family: "Kantumruy Pro";
+  src: url('./fonts/KantumruyPro-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Body */
+body {
+  font-family: var(--khmer-font);
+  margin: 0;
+  padding: 0;
+  background-color: var(--light-gray);
+}
+
+/* Header */
+header {
+  background-color: var(--primary-color);
+  color: var(--white);
+  padding: 20px 0;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.logo h1 {
+  font-family: var(--heading-font);
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+nav ul li {
+  margin: 0 15px;
+}
+
+nav ul li a {
+  color: var(--white);
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-family: var(--heading-font);
+}
+
+nav ul li a:hover {
+  color: var(--accent-color);
+}
+
+/* Main Content */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport height */
+  text-align: center;
+}
+
+.success-message {
+  background-color: var(--white);
+  padding: 20px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  width: 80%; /* Adjust the width as needed */
+  max-width: 600px; /* Maximum width to avoid it being too wide */
+}
+
+.success-message h2 {
+  color: var(--primary-color);
+  font-size: 2rem;
+  margin-bottom: 20px;
+  font-family: var(--heading-font);
+}
+
+.success-message p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  font-family: var(--khmer-font);
+}
+
+.success-message .btn {
+  background-color: var(--primary-color);
+  color: var(--white);
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  font-family: var(--heading-font);
+}
+
+.success-message .btn:hover {
+  background-color: var(--primary-dark);
+}
+
+/* Footer */
+footer {
+  background-color: var(--primary-light);
+  color: var(--white);
+  padding: 40px 0;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0 20px;
+}
+
+.footer-logo p {
+  font-family: var(--khmer-font);
+  font-size: 1.1rem;
+}
+
+.footer-links h3 {
+  font-family: var(--heading-font);
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links ul li {
+  margin-bottom: 10px;
+}
+
+.footer-links ul li a {
+  color: var(--white);
+  text-decoration: none;
+  font-size: 1rem;
+  font-family: var(--khmer-font);
+}
+
+.footer-links ul li a:hover {
+  color: var(--accent-color);
+}
+
+.footer-contact {
+  font-family: var(--khmer-font);
+}
+
+.footer-contact .social-links {
+  margin-top: 20px;
+}
+
+.social-link {
+  margin-right: 10px;
+  color: var(--white);
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
+.social-link:hover {
+  color: var(--accent-color);
+}
+
+.copyright {
+  background-color: var(--primary-dark);
+  text-align: center;
+  padding: 15px 0;
+  font-family: var(--khmer-font);
+  font-size: 1rem;
+  color: var(--white);
+}
