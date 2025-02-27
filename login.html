@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="km">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>គេហទំព័រ​ចុះឈ្មោះ</title>
+    <link rel="stylesheet" href="login.css" />
+  </head>
+
+  <body>
+    <header>
+      <div class="header-container">
+        <div class="logo">
+          <img src="./images/rupp_logo.png" alt="Logo" />
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="login-section">
+        <div class="login-container">
+          <h2 class="section-title">ចូលគណនី</h2>
+          <form action="login" method="POST">
+            <div class="form-group" >
+              <label for="email">អ៊ីមែល:</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="បញ្ចូលអ៊ីមែលរបស់អ្នក"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="password">ពាក្យសម្ងាត់:</label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="បញ្ចូលពាក្យសម្ងាត់"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <button type="submit" class="login-btn">ចូល</button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

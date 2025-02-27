@@ -95,7 +95,7 @@ nav ul li a:hover {
 
 .success-message {
   background-color: var(--white);
-  padding: 20px;
+  padding: 50px;
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   width: 80%; /* Adjust the width as needed */
@@ -118,7 +118,7 @@ nav ul li a:hover {
 .success-message .btn {
   background-color: var(--primary-color);
   color: var(--white);
-  padding: 10px 20px;
+  padding: 15px 20px;
   text-decoration: none;
   border-radius: var(--radius);
   font-size: 1rem;

@@ -70,7 +70,12 @@
             </div>
 
             <div class="register-form-container">
-              <form id="registrationForm" class="register-form">
+              <form
+                id="registrationForm"
+                class="register-form"
+                action="./php/register.php"
+                method="post"
+              >
                 <div class="form-section">
                   <h4>ព័ត៌មានផ្ទាល់ខ្លួន</h4>
                   <div class="form-row">
@@ -132,8 +137,15 @@
                         id="place-of-birth"
                         name="place-of-birth"
                         required
-                        placeholder="Kampot"
+                        placeholder="កំពត"
                       />
+                    </div>
+                    <div class="form-group">
+                      <label for="gender">ភេទ</label>
+                      <select id="gender" name="gender" required>
+                        <option value="male">ប្រុស</option>
+                        <option value="female">ស្រី</option>
+                      </select>
                     </div>
                   </div>
                 </div>
@@ -143,7 +155,7 @@
                   <div class="form-row">
                     <div class="form-group">
                       <label for="email">អ៊ីមែល (Optional)</label>
-                      <input type="email" id="email" name="email" />
+                      <input type="email" id="email" name="email" placeholder="koko123@gmail.com"/>
                     </div>
                     <div class="form-group">
                       <label for="phone">លេខទូរស័ព្ទ</label>
@@ -180,7 +192,7 @@
                   <button
                     type="button"
                     class="button button-secondary"
-                    onclick="window.location.href='success.html'">
+                    onclick="window.location.href='success.html'"
                   >
                     បោះបង់
                   </button>
@@ -241,7 +253,7 @@
       </div>
     </footer>
 
-    <script>
+    <!-- <script>
       document.addEventListener("DOMContentLoaded", function () {
         const registrationForm = document.getElementById("registrationForm");
         registrationForm.addEventListener("submit", function (event) {
@@ -270,6 +282,6 @@
           }
         });
       });
-    </script>
+    </script> -->
   </body>
 </html>
