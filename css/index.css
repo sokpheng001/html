@@ -364,7 +364,7 @@ main {
 }
 
 .contact-card h4 {
-  color: var(--primary-color);
+  color: var (--primary-color);
   margin-bottom: 1rem;
 }
 

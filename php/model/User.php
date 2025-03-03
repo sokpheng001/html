@@ -8,7 +8,8 @@
     private string $motherName;
     private DateTime $dateOfBirth;
     private string $placeOfBirth;
-    private ?string $email; // Nullable
+    private ?string $originalEmail; // Nullable
+    private string $schoolEmail;
     private string $phoneNumber;
     private string $password;
     private string $profile;
@@ -68,7 +69,10 @@
     }
 
     public function setEmail(?string $email): void {
-        $this->email = $email;
+        $this->originalEmail = $email;
+    }
+    public function setSchoolEmail(string $sEmail):void{
+        $this->schoolEmail = $sEmail;
     }
 
     public function setPhoneNumber(string $phoneNumber): void {
@@ -119,8 +123,11 @@
         return $this->placeOfBirth;
     }
 
-    public function getEmail(): ?string {
-        return $this->email;
+    public function getOriginalEmail(): ?string {
+        return $this->originalEmail;
+    }
+    public function getSchoolEmail():string{
+        return $this->schoolEmail;
     }
 
     public function getPhoneNumber(): string {
