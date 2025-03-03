@@ -34,8 +34,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             VALUES (?,?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     // Generate a UUID in PHP
     $uuid = uniqid('', true);  
-    // generate password for student
-    $user_password = generatePassword();
+    // generate password and hash it for student
+    $user_password = hashPassword(generatePassword());
     // random school email for student
     $school_email = schoolEmailGenerator($latin_name);
     echo $latin_name;

@@ -16,25 +16,28 @@
     private string $major; // New field
 
     // Constructor
-    // public function __construct(
-    //     int $id, string $uuid, string $khmerName, string $latinName,
-    //     string $fatherName, string $motherName, DateTime $dateOfBirth, string $placeOfBirth,
-    //     ?string $email, string $phoneNumber, string $password, string $profile, string $major
-    // ) {
-    //     $this->id = $id;
-    //     $this->uuid = $uuid;
-    //     $this->khmerName = $khmerName;
-    //     $this->latinName = $latinName;
-    //     $this->fatherName = $fatherName;
-    //     $this->motherName = $motherName;
-    //     $this->dateOfBirth = $dateOfBirth;
-    //     $this->placeOfBirth = $placeOfBirth;
-    //     $this->email = $email;
-    //     $this->phoneNumber = $phoneNumber;
-    //     $this->password = $password;
-    //     $this->profile = $profile;
-    //     $this->major = $major;
-    // }
+    public function __construct(
+        ?int $id = null, string $uuid = '', string $khmerName = '', string $latinName = '',
+        ?string $fatherName = null, ?string $motherName = null, ?DateTime $dateOfBirth = null, string $placeOfBirth = '',
+        ?string $originalEmail = null, ?string $schoolEmail = null, string $phoneNumber = '', string $password = '', 
+        string $profile = '', string $major = ''
+    ) {
+        $this->id = $id;
+        $this->uuid = $uuid;
+        $this->khmerName = $khmerName;
+        $this->latinName = $latinName;
+        $this->fatherName = $fatherName;
+        $this->motherName = $motherName;
+        $this->dateOfBirth = $dateOfBirth;
+        $this->placeOfBirth = $placeOfBirth;
+        $this->originalEmail = $originalEmail;
+        $this->schoolEmail = $schoolEmail;
+        $this->phoneNumber = $phoneNumber;
+        $this->password = $password;
+        $this->profile = $profile;
+        $this->major = $major;
+    }
+
 // Setters
     public function setId(int $id): void {
         $this->id = $id;
