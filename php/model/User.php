@@ -1,4 +1,5 @@
-<?phpclass User {
+<?php
+    class User {
     private int $id;
     private string $uuid;
     private string $khmerName;
@@ -13,7 +14,7 @@
     private string $profile;
     private string $major; // New field
 
-    // Constructor
+   // constructor   
     public function __construct(
         int $id, string $uuid, string $khmerName, string $latinName,
         string $fatherName, string $motherName, DateTime $dateOfBirth, string $placeOfBirth,
