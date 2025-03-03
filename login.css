@@ -30,17 +30,22 @@ body {
   color: var(--text-color);
   margin: 0;
   padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
-/* Header Section */
-header {
-  text-align: center;
-  margin-bottom: 2rem;
+main {
+  width: 100%;
+  max-width: 500px;
+  padding: 1rem;
 }
 
-header .logo img {
-  width: 150px;
-  height: auto;
+.header-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
 }
 
 /* Login Section */
@@ -48,7 +53,6 @@ header .logo img {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* padding: 3rem; */
 }
 
 .login-container {
@@ -57,7 +61,6 @@ header .logo img {
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   width: 100%;
-  max-width: 400px;
 }
 
 .section-title {
@@ -80,7 +83,7 @@ header .logo img {
 .form-group input,
 .form-group select,
 .form-group textarea {
-  width: 91.5%;
+  width: 100%;
   padding: 0.75rem 1rem;
   border: 1px solid var(--medium-gray);
   border-radius: var(--radius);
@@ -88,7 +91,6 @@ header .logo img {
   font-family: var(--khmer-font);
   transition: var(--transition);
 }
-
 
 .form-group input:focus,
 .form-group select:focus,
