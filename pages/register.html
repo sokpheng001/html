@@ -4,15 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ចុះឈ្មោះសិក្សា - សាកលវិទ្យាល័យភូមិន្ទភ្នំពេញ</title>
-    <link rel="icon" type="image/png" href="./images/rupp_logo.png" />
-    <link rel="stylesheet" href="register.css" />
+    <link rel="icon" type="image/png" href="../images/rupp_logo.png" />
+    <link rel="stylesheet" href="../css/register.css" />
   </head>
   <body>
     <header>
       <div class="header-container">
         <div class="logo">
-          <a href="./index.html"
-            ><img src="./images/rupp_logo.png" alt="រូបសញ្ញា RUPP"
+          <a href="../index.html"
+            ><img src="../images/rupp_logo.png" alt="រូបសញ្ញា RUPP"
           /></a>
           <div class="logo-text">
             <h1>សាកលវិទ្យាល័យភូមិន្ទភ្នំពេញ</h1>
@@ -21,11 +21,11 @@
         </div>
         <nav>
           <ul>
-            <li><a href="index.html">ទំព័រដើម</a></li>
-            <li><a href="index.html#about">អំពីយើង</a></li>
-            <li><a href="index.html#services">សេវាកម្ម</a></li>
-            <li><a href="index.html#team">ក្រុមការងារ</a></li>
-            <li><a href="index.html#contact">ទំនាក់ទំនង</a></li>
+            <li><a href="../index.html">ទំព័រដើម</a></li>
+            <li><a href="../index.html#about">អំពីយើង</a></li>
+            <li><a href="../index.html#services">សេវាកម្ម</a></li>
+            <li><a href="../index.html#team">ក្រុមការងារ</a></li>
+            <li><a href="../index.html#contact">ទំនាក់ទំនង</a></li>
           </ul>
         </nav>
       </div>
@@ -73,7 +73,7 @@
               <form
                 id="registrationForm"
                 class="register-form"
-                action="./php/register.php"
+                action="../php/register.php"
                 method="post"
               >
                 <div class="form-section">
@@ -155,7 +155,12 @@
                   <div class="form-row">
                     <div class="form-group">
                       <label for="email">អ៊ីមែល (Optional)</label>
-                      <input type="email" id="email" name="email" placeholder="koko123@gmail.com"/>
+                      <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="koko123@gmail.com"
+                      />
                     </div>
                     <div class="form-group">
                       <label for="phone">លេខទូរស័ព្ទ</label>
@@ -189,13 +194,10 @@
                 </div>
 
                 <div class="form-actions">
-                  <button
-                    type="button"
-                    class="button button-secondary"
-                    onclick="window.location.href='success.html'"
-                  >
+                  <button type="button" class="button button-secondary">
                     បោះបង់
                   </button>
+                  <!--  -->
                   <button type="submit" class="button button-primary">
                     ចុះឈ្មោះ
                   </button>
@@ -209,50 +211,59 @@
 
     <footer>
       <div class="footer-container">
-        <div class="footer-logo">
-          <img src="./images/rupp_logo.png" alt="រូបសញ្ញា RUPP" />
-          <p>នាយកដ្ឋានបច្ចេកវិទ្យាព័ត៌មាន</p>
-          <p>សាកលវិទ្យាល័យភូមិន្ទភ្នំពេញ</p>
+        <div class="footer-column">
+          <h3>តំណភ្ជាប់រហ័ស</h3>
+          <ul>
+            <li><a href="#home">ទំព័រដើម</a></li>
+            <li><a href="#about">អំពីយើង</a></li>
+            <li><a href="#services">សេវាកម្ម</a></li>
+            <li><a href="#team">ក្រុមការងាររបស់យើង</a></li>
+            <li><a href="#contact">ទំនាក់ទំនង</a></li>
+            <li><a href="register-it.html">ចុះឈ្មោះ</a></li>
+          </ul>
         </div>
-        <div class="footer-links">
-          <div class="footer-column">
-            <h3>តំណភ្ជាប់រហ័ស</h3>
-            <ul>
-              <li><a href="index.html">ទំព័រដើម</a></li>
-              <li><a href="index.html#about">អំពីយើង</a></li>
-              <li><a href="index.html#services">សេវាកម្ម</a></li>
-              <li><a href="index.html#team">ក្រុមការងាររបស់យើង</a></li>
-              <li><a href="index.html#contact">ទំនាក់ទំនង</a></li>
-            </ul>
-          </div>
-          <div class="footer-column">
-            <h3>ប្រព័ន្ធគ្រប់គ្រង</h3>
-            <ul>
-              <li><a href="#">សិក្សាតាមប្រព័ន្ធ</a></li>
-              <li><a href="#">ធនធានបណ្ណាល័យ</a></li>
-              <li><a href="#">សេវាកម្មសិស្ស</a></li>
-              <li><a href="#">ការបោះពុម្ភឯកសារ</a></li>
-            </ul>
-          </div>
+        <div class="footer-column">
+          <h3>ធនធានបច្ចេកវិទ្យាព័ត៌មាន</h3>
+          <ul>
+            <li><a href="#">អ៊ីមែលនិស្សិត</a></li>
+            <li><a href="#">ប្រព័ន្ធគ្រប់គ្រងការសិក្សា</a></li>
+            <li><a href="#">ធនធានបណ្ណាល័យ</a></li>
+            <li><a href="#">ទាញយកកម្មវិធី</a></li>
+            <li><a href="#">គោលនយោបាយបច្ចេកវិទ្យាព័ត៌មាន</a></li>
+          </ul>
         </div>
-        <div class="footer-contact">
-          <h3>ទំនាក់ទំនង</h3>
-          <p>📍 មហាវិថីសហព័ន្ធរុស្ស៊ី, ភ្នំពេញ</p>
-          <p>📞 +(៨៥៥) ១៧៩ ៤៧៨ ៨៨៨</p>
-          <p>✉️ contact@rupp.edu.kh</p>
+        <div class="footer-column">
+          <h3>ការគាំទ្រ</h3>
+          <ul>
+            <li><a href="#">ផ្នែកជំនួយបច្ចេកវិទ្យាព័ត៌មាន</a></li>
+            <li><a href="#">ស្ថានភាពបណ្តាញ</a></li>
+            <li><a href="#">កំណត់ពាក្យសម្ងាត់ឡើងវិញ</a></li>
+            <li><a href="#">សំណួរដែលសួរញឹកញាប់</a></li>
+            <li><a href="#">រាយការណ៍អំពីបញ្ហា</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>ភ្ជាប់ទំនាក់ទំនងជាមួយយើង</h3>
           <div class="social-links">
             <a href="#" class="social-link">FB</a>
             <a href="#" class="social-link">TW</a>
             <a href="#" class="social-link">IG</a>
             <a href="#" class="social-link">LI</a>
+            <a href="#" class="social-link">YT</a>
           </div>
+          <p style="margin-top: 1rem">
+            ចុះឈ្មោះជាវព្រឹត្តិបត្ររបស់យើងសម្រាប់ព័ត៌មានថ្មីៗ
+            និងសេចក្តីជូនដំណឹងផ្នែកបច្ចេកវិទ្យាព័ត៌មាន។
+          </p>
         </div>
       </div>
       <div class="copyright">
-        <p>&copy; ២០២៥ សាកលវិទ្យាល័យភូមិន្ទភ្នំពេញ។ រក្សាសិទ្ធិគ្រប់យ៉ាង។</p>
+        <p>
+          &copy; ២០២៥ នាយកដ្ឋានបច្ចេកវិទ្យាព័ត៌មាននៃសាកលវិទ្យាល័យភូមិន្ទភ្នំពេញ។
+          រក្សាសិទ្ធិគ្រប់យ៉ាង។
+        </p>
       </div>
     </footer>
-
     <!-- <script>
       document.addEventListener("DOMContentLoaded", function () {
         const registrationForm = document.getElementById("registrationForm");
