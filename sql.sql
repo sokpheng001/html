@@ -14,3 +14,4 @@ CREATE TABLE students (
     profile VARCHAR(255) NOT NULL,
     major VARCHAR(255) NOT NULL
 );
+
