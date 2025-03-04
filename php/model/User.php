@@ -14,13 +14,14 @@
     private string $password;
     private string $profile;
     private string $major; // New field
+    private DateTime $exipred_date;
 
     // Constructor
     public function __construct(
         ?int $id = null, string $uuid = '', string $khmerName = '', string $latinName = '',
         ?string $fatherName = null, ?string $motherName = null, ?DateTime $dateOfBirth = null, string $placeOfBirth = '',
         ?string $originalEmail = null, ?string $schoolEmail = null, string $phoneNumber = '', string $password = '', 
-        string $profile = '', string $major = ''
+        string $profile = '', string $major = '', DateTime $exipred_date
     ) {
         $this->id = $id;
         $this->uuid = $uuid;
@@ -36,6 +37,7 @@
         $this->password = $password;
         $this->profile = $profile;
         $this->major = $major;
+        $this->exipred_date = $exipred_date;
     }
 
 // Setters
@@ -93,7 +95,15 @@
     public function setMajor(string $major): void {
         $this->major = $major;
     }
+    public function setExpiredDate(DateTime $expired_date): void {
+        $this->exipred_date = $expired_date;
+    }
+    
+
     // Getters
+    public function getExpiredDate(): DateTime {
+        return $this->exipred_date;
+    }
     public function getId(): int {
         return $this->id;
     }

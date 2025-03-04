@@ -1,8 +1,11 @@
 <?php
     require_once __DIR__ .'/abstraction/repository.php';
+    require_once '../utils/database_connect.php';
+    
     class UserRepository implements Repository{
             
         public function save($user):int{
+
             return 0;
         }
 

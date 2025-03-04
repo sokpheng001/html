@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ការចុះឈ្មោះជោគជ័យ</title>
+    <link rel="icon" type="image/png" href="../images/rupp_logo.png" />
     <link rel="stylesheet" href="success.css" />
     <link rel="stylesheet" href="../css/register.css" />
   </head>
@@ -37,7 +38,29 @@
       <div class="success-message">
         <h2>✅ ការចុះឈ្មោះរបស់អ្នកបានជោគជ័យ!</h2>
         <p>សូមអរគុណសម្រាប់ការចុះឈ្មោះ។ យើងនឹងទាក់ទងអ្នកឆាប់ៗនេះ។</p>
-        <a href="../pages/login.html" class="btn">🔙 ចូលទៅកាន់គណនីរបស់អ្នក</a>
+        <a href="../pages/login.html" class="btn">ចូលទៅកាន់គណនីរបស់អ្នក</a>
+        <section>
+          <div id="user-credentials" class="credentials-container">
+            <label for="email-input">📧 អ៊ីមែល:</label>
+            <div class="input-group">
+              <input type="text" id="email-input" readonly />
+              <button class="copy-btn" onclick="copyToClipboard('email-input')">
+                📋 ចម្លង
+              </button>
+            </div>
+
+            <label for="password-input">🔑 ពាក្យសម្ងាត់:</label>
+            <div class="input-group">
+              <input type="text" id="password-input" readonly />
+              <button
+                class="copy-btn"
+                onclick="copyToClipboard('password-input')"
+              >
+                📋 ចម្លង
+              </button>
+            </div>
+          </div>
+        </section>
       </div>
     </main>
 
@@ -98,5 +121,38 @@
         </p>
       </div>
     </footer>
+    <script>
+      alert(
+        "The username and password will remove from page after 15 minutes. ⏳"
+      );
+
+      // Function to get cookie value
+      function getCookie(name) {
+        let match = document.cookie.match(
+          new RegExp("(^| )" + name + "=([^;]+)")
+        );
+        return match ? decodeURIComponent(match[2]) : null;
+      }
+
+      // Function to copy text from input fields
+      function copyToClipboard(elementId) {
+        let input = document.getElementById(elementId);
+        input.select();
+        input.setSelectionRange(0, 99999); // For mobile devices
+        navigator.clipboard.writeText(input.value).then(() => {
+          alert("បានចម្លងទៅក្តារចម្លង! ✅");
+        });
+      }
+
+      // Get email & password from cookies
+      const email = getCookie("student_email");
+      const password = getCookie("student_password");
+
+      if (email && password) {
+        document.getElementById("email-input").value = email;
+        document.getElementById("password-input").value = password;
+        document.getElementById("user-credentials").style.display = "block";
+      }
+    </script>
   </body>
 </html>

@@ -129,6 +129,74 @@ nav ul li a:hover {
   background-color: var(--primary-dark);
 }
 
+/* Center the credentials container */
+.credentials-container {
+  margin: 20px auto; /* Centers horizontally */
+  padding: 20px;
+  background-color: #e8f0fe; /* Light blue background */
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  width: 90%; /* Make it responsive */
+  max-width: 400px; /* Prevent it from being too wide */
+}
+
+/* Input Group */
+.input-group {
+  display: flex;
+  align-items: center;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  padding: 8px;
+  margin-bottom: 15px;
+  width: 100%; /* Ensures full width inside the container */
+}
+
+/* Input Field */
+.credentials-container input {
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  padding: 5px;
+  flex: 1;
+  min-width: 0; /* Ensures input shrinks properly */
+  background: transparent;
+}
+
+/* Copy Button */
+.copy-btn {
+  background: #ff7043;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  transition: 0.2s;
+}
+
+.copy-btn:hover {
+  background: #f4511e;
+}
+
+/* Responsive Fix for Mobile */
+@media (max-width: 480px) {
+  .credentials-container {
+    width: 95%; /* Take more space on smaller screens */
+  }
+
+  .input-group {
+    flex-direction: row; /* Ensure input and button stay in a row */
+  }
+
+  .copy-btn {
+    padding: 6px 10px; /* Adjust padding for smaller screens */
+    font-size: 0.8rem;
+  }
+}
+
+
 /* Footer */
 footer {
   background-color: var(--primary-light);
@@ -202,4 +270,65 @@ footer {
   font-family: var(--khmer-font);
   font-size: 1rem;
   color: var(--white);
+}
+
+@media (max-width: 768px) {
+  .header-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .logo h1 {
+    font-size: 1.2rem;
+  }
+
+  nav ul {
+    flex-direction: column;
+    padding: 0;
+  }
+
+  nav ul li {
+    margin: 5px 0;
+  }
+
+  .container {
+    padding: 20px;
+    height: auto;
+  }
+
+  .success-message {
+    width: 100%;
+    padding: 30px;
+  }
+
+  .success-message h2 {
+    font-size: 1.5rem;
+  }
+
+  .success-message p {
+    font-size: 1rem;
+  }
+
+  .success-message .btn {
+    padding: 10px 15px;
+    font-size: 0.9rem;
+  }
+
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer-column {
+    margin-bottom: 20px;
+  }
+
+  .social-links {
+    display: flex;
+    justify-content: center;
+  }
+
+  .social-link {
+    margin: 0 5px;
+  }
 }

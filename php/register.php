@@ -18,39 +18,67 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $phone = $_POST['phone'];
     $major = $_POST['major'];
 
+    // create a user
+    $u_id = rand(1,99999);// id
+        // Generate a UUID in PHP
+    $uuid = uniqid('', true);
+        // generate password and hash it for student
+    $user_password = generatePassword();
+    $hash_password = hashPassword($user_password);
+    // random school email for student
+    $school_email = schoolEmailGenerator($latin_name);
+    //  
+    $expire = new DateTime();
+    $user = new User($u_id,$uuid,
+     $khmer_name,
+     $latin_name, 
+     $father_name,
+      $mother_name, 
+      $date_of_birth, $place_of_birth,
+      $email, $school_email, $phone, $hash_password,
+      "",$major,new DateTime($expire->format('Y-m-d H:i:s')));
 
     // Create a connection
     $conn = $database_connection;
-    
-
     // Check connection
     if (!$conn) {
         die("Connection failed: " . mysqli_connect_error());
     }
-    echo "Connected successfully!";
+    // echo "Connected successfully!";
 
     // Prepare the SQL query to insert the data into the database
-    $sql = "INSERT INTO students (password,uuid,latin_name, khmer_name, father_name, mother_name, date_of_birth, place_of_birth, gender, school_email, phone_number, major)
+    $sql = "INSERT INTO students (password,uuid,latin_name, khmer_name, 
+    father_name, mother_name, 
+    date_of_birth, place_of_birth, 
+    gender, school_email, phone_number, major)
             VALUES (?,?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-    // Generate a UUID in PHP
-    $uuid = uniqid('', true);  
-    // generate password and hash it for student
-    $user_password = hashPassword(generatePassword());
-    // random school email for student
-    $school_email = schoolEmailGenerator($latin_name);
-    echo $latin_name;
+
+
     // Prepare the statement
     if ($stmt = mysqli_prepare($conn, $sql)) {
         // Bind the parameters to the query
-        mysqli_stmt_bind_param($stmt, "ssssssssssss",$user_password,$uuid,$latin_name , $khmer_name, $father_name, $mother_name, $date_of_birth, $place_of_birth, $gender, $school_email, $phone, $major);
+        mysqli_stmt_bind_param($stmt, "ssssssssssss",
+        $hash_password,
+        $uuid,$latin_name , 
+        $khmer_name, $father_name,
+         $mother_name, $date_of_birth,
+          $place_of_birth, $gender,
+           $school_email, $phone, $major);
 
         // Execute the statement
         if (mysqli_stmt_execute($stmt)) {
-            echo "Data inserted successfully!";
+            // echo "Your email: ".$school_email."<br/>";
+            // echo "Your password: ".$user_password."<br/>";
+            // Set cookies BEFORE any output
+            setcookie("student_email", $school_email, time() + 900, "/"); // Expires in 15 minutes (900 seconds)
+            setcookie("student_password", $user_password, time() + 900, "/"); // Expires in 15 minutes (900 seconds)
+
+            // redirect to success page
+            header("Location: ../success.html");
+            exit();
         } else {
             echo "Error: " . mysqli_error($conn);
         }
-
         // Close the statement
         mysqli_stmt_close($stmt);
     } else {
