@@ -12,8 +12,7 @@
     <main>
       <div class="header-container">
         <div class="logo">
-          <a
-          href="/"
+          <a href="/"
             ><img
               src="../images/rupp_logo.png"
               alt="Logo"
@@ -46,6 +45,12 @@
                 required
               />
             </div>
+            <!-- forgot password -->
+            <div class="form-group">
+              <div class="forgot-password-container">
+                <a href="#" class="forgot-password-link" onclick="showContactMessage(event)">ភ្លេចពាក្យសម្ងាត់?</a>
+              </div>
+            </div>
             <div class="form-group">
               <button type="submit" class="login-btn">ចូល</button>
             </div>
@@ -53,5 +58,13 @@
         </div>
       </section>
     </main>
+    <script>
+      function showContactMessage(event) {
+        event.preventDefault(); // Prevent the default link behavior
+        alert(
+          "សូមទំនាក់ទំនងអ្នកគ្រប់គ្រង IT៖ 0975547225\nMail Server កំពុងជួសជុល"
+        );
+      }
+    </script>
   </body>
 </html>

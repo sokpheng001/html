@@ -23,11 +23,11 @@
         </div>
         <nav>
           <ul>
-            <li><a href="../index.html">ទំព័រដើម</a></li>
-            <li><a href="../index.html#about">អំពីយើង</a></li>
-            <li><a href="../index.html#services">សេវាកម្ម</a></li>
-            <li><a href="../index.html#team">ក្រុមការងារ</a></li>
-            <li><a href="../index.html#contact">ទំនាក់ទំនង</a></li>
+            <li><a href="#home" class="active">ទំព័រដើម</a></li>
+            <li><a href="#about">អំពីយើង</a></li>
+            <li><a href="#services">សេវាកម្ម</a></li>
+            <li><a href="#contact">ទំនាក់ទំនង</a></li>
+            <li><a href="pages/login.html">ចូលគណនី</a></li>
           </ul>
         </nav>
       </div>
@@ -51,7 +51,7 @@
 
             <label for="password-input">🔑 ពាក្យសម្ងាត់:</label>
             <div class="input-group">
-              <input type="text" id="password-input" readonly />
+              <input type="password" id="password-input" readonly />
               <button
                 class="copy-btn"
                 onclick="copyToClipboard('password-input')"
@@ -122,10 +122,6 @@
       </div>
     </footer>
     <script>
-      alert(
-        "The username and password will remove from page after 15 minutes. ⏳"
-      );
-
       // Function to get cookie value
       function getCookie(name) {
         let match = document.cookie.match(
@@ -149,9 +145,14 @@
       const password = getCookie("student_password");
 
       if (email && password) {
+        alert(
+          "The username and password will remove from page after 15 minutes. ⏳"
+        );
         document.getElementById("email-input").value = email;
         document.getElementById("password-input").value = password;
         document.getElementById("user-credentials").style.display = "block";
+      } else {
+        window.location.href = "../pages/not-found.html";
       }
     </script>
   </body>

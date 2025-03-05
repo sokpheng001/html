@@ -4,14 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/png" href="../../images/rupp_logo.png" />
-    <title>Profile</title>
+    <title id="profile-name-title">គណនី</title>
     <link rel="stylesheet" href="profile.css" />
   </head>
   <body>
     <header>
       <div class="header-container">
         <div class="logo">
-          <a href="/"><img src="../../images/rupp_logo.png" alt="រូបសញ្ញា RUPP" /></a>
+          <a href="/"
+            ><img src="../../images/rupp_logo.png" alt="រូបសញ្ញា RUPP"
+          /></a>
           <div class="logo-text">
             <h1>សាកលវិទ្យាល័យភូមិន្ទភ្នំពេញ</h1>
             <p>នាយកដ្ឋានបច្ចេកវិទ្យាព័ត៌មាន</p>
@@ -33,22 +35,57 @@
       <section class="profile-section">
         <div class="profile-container">
           <div class="profile-header">
-            <img src="../../images/profile.png" alt="Profile Picture" class="profile-picture" />
-            <h2 class="profile-name">សុខា មាស</h2>
-            <p class="profile-major">វិស្វកម្មកម្មវិធី</p>
+            <img
+              src="../../images/profile.png"
+              alt="Profile Picture"
+              class="profile-picture"
+              id="profile-picture"
+            />
+            <h2 class="profile-name" id="profile-name">សុផេង</h2>
+            <p class="profile-major" id="profile-major">វិស្វកម្មកម្មវិធី</p>
           </div>
           <div class="profile-details">
             <h3>ព័ត៌មានផ្ទាល់ខ្លួន</h3>
             <ul>
-              <li><strong>ឈ្មោះខ្មែរ:</strong> សុខា មាស</li>
-              <li><strong>ឈ្មោះឡាតាំង:</strong> Sokha Meas</li>
-              <li><strong>ឪពុក:</strong> សុខា មាស</li>
-              <li><strong>ម្តាយ:</strong> សុខា មាស</li>
-              <li><strong>ថ្ងៃខែឆ្នាំកំណើត:</strong> ១ មករា ១៩៨០</li>
-              <li><strong>ទីកន្លែងកំណើត:</strong> ភ្នំពេញ</li>
-              <li><strong>អ៊ីមែល:</strong> sokha.meas@example.com</li>
-              <li><strong>លេខទូរស័ព្ទ:</strong> 0123456789</li>
-              <li><strong>លេខសម្ងាត់:</strong> ********</li>
+              <li>
+                <strong>ឈ្មោះខ្មែរ:</strong> <span id="khmer-name">សុផេង</span>
+              </li>
+              <li>
+                <strong>ឈ្មោះឡាតាំង:</strong>
+                <span id="latin-name">Sokpheng</span>
+              </li>
+              <li>
+                <strong>ឪពុក:</strong> <span id="father-name">សុផេង</span>
+              </li>
+              <li>
+                <strong>ម្តាយ:</strong> <span id="mother-name">សុផេង</span>
+              </li>
+              <li>
+                <strong>ថ្ងៃខែឆ្នាំកំណើត:</strong>
+                <span id="date-of-birth">១ មករា ១៩៨០</span>
+              </li>
+              <li>
+                <strong>ទីកន្លែងកំណើត:</strong>
+                <span id="place-of-birth">ភ្នំពេញ</span>
+              </li>
+              <li>
+                <strong>អ៊ីមែល:</strong>
+                <span id="school-email">sokha.meas@example.com</span>
+              </li>
+              <li>
+                <strong>លេខទូរស័ព្ទ:</strong>
+                <span id="phone-number">0123456789</span>
+              </li>
+              <li>
+                <strong>មុខវិជ្ជា:</strong>
+                <span id="major">វិស្វកម្មកម្មវិធី</span>
+              </li>
+              <li><strong>ភេទ:</strong> <span id="gender">ប្រុស</span></li>
+              <li>
+                <strong>គណនីផុតកំណត់:</strong>
+                <span id="expired_date">02-21-2025</span>
+              </li>
+              <!-- <li><strong>លេខសម្ងាត់:</strong> <span id="password">********</span></li> -->
             </ul>
           </div>
         </div>
@@ -105,11 +142,83 @@
       </div>
       <div class="copyright">
         <p>
-          &copy; ២០២៥
-          នាយកដ្ឋានបច្ចេកវិទ្យាព័ត៌មាននៃសាកលវិទ្យាល័យភូមិន្ទភ្នំពេញ។
+          &copy; ២០២៥ នាយកដ្ឋានបច្ចេកវិទ្យាព័ត៌មាននៃសាកលវិទ្យាល័យភូមិន្ទភ្នំពេញ។
           រក្សាសិទ្ធិគ្រប់យ៉ាង។
         </p>
       </div>
     </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const urlParams = new URLSearchParams(window.location.search);
+        const uuid = urlParams.get("id");
+
+        if (!uuid) {
+          window.location.href = "../not-found.html"; // Redirect if no uuid is provided
+          return;
+        }
+        if (uuid) {
+          fetch("../../php/service/fetch_user.php", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded",
+            },
+            body: `uuid=${uuid}`,
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              if (data.success) {
+                // Populate profile details with fetched data
+                document.getElementById("khmer-name").textContent =
+                  data.khmer_name;
+                document.getElementById("profile-name").textContent =
+                  data.khmer_name;
+                document.getElementById("profile-name-title").textContent =
+                  "គណនី - " + data.khmer_name;
+                document.getElementById("latin-name").textContent =
+                  data.latin_name;
+                document.getElementById("father-name").textContent =
+                  data.father_name;
+                document.getElementById("mother-name").textContent =
+                  data.mother_name;
+                document.getElementById("date-of-birth").textContent =
+                  data.date_of_birth;
+                document.getElementById("place-of-birth").textContent =
+                  data.place_of_birth;
+                document.getElementById("school-email").textContent =
+                  data.school_email || "Not provided";
+                document.getElementById("phone-number").textContent =
+                  data.phone_number;
+                document.getElementById("major").textContent = data.major;
+                document.getElementById("profile-major").textContent =
+                  data.major;
+                document.getElementById("gender").textContent = data.gender;
+                document.getElementById("expired_date").textContent =
+                  data.expired_date || "02-21-2025";
+
+                var currentDate = new Date();
+                var expiredDate = new Date(data.expired_date);
+                // Check if the account has expired
+                if (expiredDate < currentDate) {
+                  alert("⚠️ គណនីរបស់អ្នកបានផុតកំណត់!");
+                  window.location.href = "../not-found.html"; // Redirect on error
+                  return; // Prevent form submission if expired
+                }
+
+                // If you have a profile image URL, you can also update the profile picture
+                if (data.profile) {
+                  document.querySelector(".profile-picture").src = data.profile;
+                }
+              } else {
+                console.error("User not found");
+                window.location.href = "../not-found.html"; // Redirect on error
+              }
+            })
+            .catch((error) => {
+              console.error("Error fetching user data:", error);
+            });
+        }
+      });
+    </script>
   </body>
 </html>

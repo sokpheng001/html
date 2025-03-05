@@ -21,11 +21,11 @@
         </div>
         <nav>
           <ul>
-            <li><a href="../index.html">ទំព័រដើម</a></li>
-            <li><a href="../index.html#about">អំពីយើង</a></li>
-            <li><a href="../index.html#services">សេវាកម្ម</a></li>
-            <li><a href="../index.html#team">ក្រុមការងារ</a></li>
-            <li><a href="../index.html#contact">ទំនាក់ទំនង</a></li>
+            <li><a href="#home" class="active">ទំព័រដើម</a></li>
+            <li><a href="#about">អំពីយើង</a></li>
+            <li><a href="#services">សេវាកម្ម</a></li>
+            <li><a href="#contact">ទំនាក់ទំនង</a></li>
+            <li><a href="login.html">ចូលគណនី</a></li>
           </ul>
         </nav>
       </div>
@@ -143,8 +143,8 @@
                     <div class="form-group">
                       <label for="gender">ភេទ</label>
                       <select id="gender" name="gender" required>
-                        <option value="male">ប្រុស</option>
-                        <option value="female">ស្រី</option>
+                        <option value="ប្រុស">ប្រុស</option>
+                        <option value="ស្រី">ស្រី</option>
                       </select>
                     </div>
                   </div>
@@ -269,35 +269,5 @@
         </p>
       </div>
     </footer>
-    <!-- <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const registrationForm = document.getElementById("registrationForm");
-        registrationForm.addEventListener("submit", function (event) {
-          event.preventDefault();
-
-          // Basic validation
-          const requiredFields =
-            registrationForm.querySelectorAll("[required]");
-          let isValid = true;
-
-          requiredFields.forEach((field) => {
-            if (!field.value.trim()) {
-              isValid = false;
-              field.classList.add("error");
-            } else {
-              field.classList.remove("error");
-            }
-          });
-
-          if (isValid) {
-            // Simulate form submission
-            alert("ការចុះឈ្មោះបានសម្រេច! សូមរង់ចាំការផ្ទៀងផ្ទាត់។");
-            this.reset();
-          } else {
-            alert("សូមបំពេញទិន្នន័យឱ្យគ្រប់។");
-          }
-        });
-      });
-    </script> -->
   </body>
 </html>

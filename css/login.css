@@ -7,7 +7,8 @@
   --light-gray: #f7f7f7;
   --white: #ffffff;
   --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  --khmer-font: "Kantumruy Pro", "Battambang", "Khmer OS", "Khmer OS System", sans-serif;
+  --khmer-font: "Kantumruy Pro", "Battambang", "Khmer OS", "Khmer OS System",
+    sans-serif;
   --heading-font: "Moul", var(--khmer-font);
   --medium-gray: #b0b0b0;
   --radius: 8px;
@@ -17,7 +18,7 @@
 /* Kantumruy Pro Regular Font */
 @font-face {
   font-family: "Kantumruy Pro";
-  src: url('../fonts/KantumruyPro-Regular.ttf') format('truetype');
+  src: url("../fonts/KantumruyPro-Regular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -40,6 +41,24 @@ main {
   width: 100%;
   max-width: 500px;
   padding: 1rem;
+}
+/* Add styles for the "Forgot Password" link */
+.forgot-password-container {
+  text-align: right;
+  margin-top: 0.5rem;
+}
+
+.forgot-password-link {
+  font-size: 0.9rem;
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: bold;
+  transition: var(--transition);
+}
+
+.forgot-password-link:hover {
+  color: var(--accent-color);
+  text-decoration: underline;
 }
 
 .header-container {

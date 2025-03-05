@@ -17,6 +17,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email']; // Optional
     $phone = $_POST['phone'];
     $major = $_POST['major'];
+    // Get today's date
+    $today = new DateTime();
+    
+    // Convert the date of birth to a DateTime object
+    $dob = new DateTime($date_of_birth);
+    
+    // Calculate the age
+    $age = $today->diff($dob)->y;
+
+    // Check if the user is under 18
+    if ($age < 18) {
+        echo "<script>alert('⚠️ ការចុះឈ្មោះមិនអាចធ្វើបានទេ។ អ្នកត្រូវមានអាយុយ៉ាងហោចណាស់ 18 ឆ្នាំ។'); window.location.href='../pages/register.html';</script>";
+        exit();  // Stop further processing
+    }
 
     // create a user
     $u_id = rand(1,99999);// id
@@ -29,14 +43,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $school_email = schoolEmailGenerator($latin_name);
     //  
     $expire = new DateTime();
-    $user = new User($u_id,$uuid,
-     $khmer_name,
-     $latin_name, 
-     $father_name,
-      $mother_name, 
-      $date_of_birth, $place_of_birth,
-      $email, $school_email, $phone, $hash_password,
-      "",$major,new DateTime($expire->format('Y-m-d H:i:s')));
+    // $user = new User($u_id,$uuid,
+    //  $khmer_name,
+    //  $latin_name, 
+    //  $father_name,
+    //   $mother_name, 
+    //   $date_of_birth, $place_of_birth,
+    //   $email, $school_email, $phone, $hash_password,
+    //   "",$major,new DateTime($expire->format('Y-m-d H:i:s')));
 
     // Create a connection
     $conn = $database_connection;
@@ -50,20 +64,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql = "INSERT INTO students (password,uuid,latin_name, khmer_name, 
     father_name, mother_name, 
     date_of_birth, place_of_birth, 
-    gender, school_email, phone_number, major)
-            VALUES (?,?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    gender, school_email, original_email, phone_number, major, expired_date)
+            VALUES (?,?,?, ?, ?, ?,?,?, ?, ?, ?, ?, ?,?)";
 
+    $account_expired_date = date("Y-m-d", strtotime("+4 years"));
 
     // Prepare the statement
     if ($stmt = mysqli_prepare($conn, $sql)) {
         // Bind the parameters to the query
-        mysqli_stmt_bind_param($stmt, "ssssssssssss",
+        mysqli_stmt_bind_param($stmt, "ssssssssssssss",
         $hash_password,
         $uuid,$latin_name , 
         $khmer_name, $father_name,
          $mother_name, $date_of_birth,
           $place_of_birth, $gender,
-           $school_email, $phone, $major);
+           $school_email,$email, $phone, $major,$account_expired_date);
 
         // Execute the statement
         if (mysqli_stmt_execute($stmt)) {

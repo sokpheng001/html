@@ -1,0 +1,217 @@
+/* Variables */
+:root {
+  --primary-color: #0a4d8c;
+  --primary-light: #2a6faf;
+  --primary-dark: #063669;
+  --secondary-color: #e6f2ff;
+  --accent-color: #ff6b35;
+  --accent-light: #ff8c5a;
+  --accent-dark: #e54e1b;
+  --text-color: #333333;
+  --text-light: #666666;
+  --light-gray: #f7f7f7;
+  --medium-gray: #e0e0e0;
+  --white: #ffffff;
+  --shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  --shadow-light: 0 2px 4px rgba(0, 0, 0, 0.05);
+  --shadow-strong: 0 8px 16px rgba(0, 0, 0, 0.12);
+  --khmer-font: "Kantumruy Pro", "Battambang", "Khmer OS", "Khmer OS System",
+    sans-serif;
+  --heading-font: "Moul", var(--khmer-font);
+  --transition: all 0.3s ease;
+  --radius: 8px;
+  --radius-lg: 12px;
+}
+
+/* Body */
+body {
+  font-family: var(--khmer-font);
+  margin: 0;
+  padding: 0;
+  background-color: var(--light-gray);
+}
+
+/* Header */
+header {
+  background-color: var(--primary-color);
+  color: var(--white);
+  padding: 20px 0;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.logo h1 {
+  font-family: var(--heading-font);
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  padding: 0;
+}
+
+nav ul li {
+  margin: 0 15px;
+}
+
+nav ul li a {
+  color: var(--white);
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+nav ul li a:hover {
+  color: var(--accent-color);
+}
+
+/* Main Content */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+}
+
+.not-found-message {
+  background-color: var(--white);
+  padding: 50px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  width: 80%;
+  max-width: 600px;
+}
+
+.not-found-message h2 {
+  color: var(--primary-color);
+  font-size: 2rem;
+  margin-bottom: 20px;
+  font-family: var(--heading-font);
+}
+
+.not-found-message p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  font-family: var(--khmer-font);
+}
+
+.not-found-message .btn {
+  background-color: var(--primary-color);
+  color: var(--white);
+  padding: 15px 20px;
+  text-decoration: none;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  font-family: var(--heading-font);
+}
+
+.not-found-message .btn:hover {
+  background-color: var(--primary-dark);
+}
+
+/* Footer */
+footer {
+  background-color: var(--primary-light);
+  color: var(--white);
+  padding: 40px 0;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0 20px;
+}
+
+.footer-column {
+  margin-top: 20px;
+}
+
+.footer-column h3 {
+  font-family: var(--heading-font);
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-column ul li {
+  margin-bottom: 10px;
+}
+
+.footer-column ul li a {
+  color: var(--white);
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.footer-column ul li a:hover {
+  color: var(--accent-color);
+}
+
+.copyright {
+  background-color: var(--primary-dark);
+  text-align: center;
+  padding: 15px 0;
+  font-family: var(--khmer-font);
+  font-size: 1rem;
+  color: var(--white);
+}
+
+/* Responsive Fix for Mobile */
+@media (max-width: 768px) {
+  .header-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .logo h1 {
+    font-size: 1.2rem;
+  }
+
+  .container {
+    padding: 20px;
+    height: auto;
+  }
+
+  .not-found-message {
+    width: 100%;
+    padding: 30px;
+  }
+
+  .not-found-message h2 {
+    font-size: 1.5rem;
+  }
+
+  .not-found-message p {
+    font-size: 1rem;
+  }
+
+  .not-found-message .btn {
+    padding: 10px 15px;
+    font-size: 0.9rem;
+  }
+
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer-column {
+    margin-bottom: 20px;
+  }
+}

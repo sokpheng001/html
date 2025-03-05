@@ -1,20 +1,20 @@
 <?php
     class User {
-    private int $id;
-    private string $uuid;
-    private string $khmerName;
-    private string $latinName;
-    private string $fatherName;
-    private string $motherName;
-    private DateTime $dateOfBirth;
-    private string $placeOfBirth;
-    private ?string $originalEmail; // Nullable
-    private string $schoolEmail;
-    private string $phoneNumber;
-    private string $password;
-    private string $profile;
-    private string $major; // New field
-    private DateTime $exipred_date;
+        private int $id;
+        private string $uuid;
+        private string $khmerName;
+        private string $latinName;
+        private string $fatherName;
+        private string $motherName;
+        private DateTime $dateOfBirth;
+        private string $placeOfBirth;
+        private ?string $originalEmail; // Nullable
+        private string $schoolEmail;
+        private string $phoneNumber;
+        private string $password;
+        private string $profile;
+        private string $major; // New field
+        private DateTime $exipred_date;
 
     // Constructor
     public function __construct(
