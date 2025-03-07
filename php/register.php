@@ -41,6 +41,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $hash_password = hashPassword($user_password);
     // random school email for student
     $school_email = schoolEmailGenerator($latin_name);
+    // random student id
+    $randomNumber = rand(1000, 9999);
+    $student_id = "RUPPIT".$randomNumber;
     //  
     $expire = new DateTime();
     // $user = new User($u_id,$uuid,
@@ -64,21 +67,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql = "INSERT INTO students (password,uuid,latin_name, khmer_name, 
     father_name, mother_name, 
     date_of_birth, place_of_birth, 
-    gender, school_email, original_email, phone_number, major, expired_date)
-            VALUES (?,?,?, ?, ?, ?,?,?, ?, ?, ?, ?, ?,?)";
+    gender, school_email, original_email, phone_number, major, expired_date, stu_id)
+            VALUES (?,?,?, ?, ?, ?,?,?, ?, ?, ?, ?, ?,?,?)";
 
     $account_expired_date = date("Y-m-d", strtotime("+4 years"));
 
     // Prepare the statement
     if ($stmt = mysqli_prepare($conn, $sql)) {
         // Bind the parameters to the query
-        mysqli_stmt_bind_param($stmt, "ssssssssssssss",
+        mysqli_stmt_bind_param($stmt, "sssssssssssssss",
         $hash_password,
         $uuid,$latin_name , 
         $khmer_name, $father_name,
          $mother_name, $date_of_birth,
           $place_of_birth, $gender,
-           $school_email,$email, $phone, $major,$account_expired_date);
+           $school_email,$email, $phone, $major,$account_expired_date, $student_id);
 
         // Execute the statement
         if (mysqli_stmt_execute($stmt)) {
