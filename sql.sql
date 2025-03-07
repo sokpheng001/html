@@ -15,5 +15,7 @@ CREATE TABLE students (
     major VARCHAR(255) NOT NULL,
     gender VARCHAR(10) NOT NULL,
     expired_date DATE NULL,
+    is_deleted TINYINT NOT NULL,
+    stu_id VARCHAR(255) NOT NULL
 );
 
