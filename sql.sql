@@ -16,6 +16,5 @@ CREATE TABLE students (
     gender VARCHAR(10) NOT NULL,
     expired_date DATE NULL,
     is_deleted TINYINT NOT NULL,
-    stu_id VARCHAR(255) NOT NULL
+    stu_id VARCHAR(255) DEFAULT 0 NULL,
 );
-
