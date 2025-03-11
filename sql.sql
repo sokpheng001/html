@@ -11,7 +11,10 @@ CREATE TABLE students (
     school_email VARCHAR(255) NOT NULL,  -- Nullable email field
     phone_number VARCHAR(20) NOT NULL,
     password VARCHAR(255) NOT NULL,
-    profile VARCHAR(255) NOT NULL,
-    major VARCHAR(255) NOT NULL
+    profile VARCHAR(255)  NULL,
+    major VARCHAR(255) NOT NULL,
+    gender VARCHAR(10) NOT NULL,
+    expired_date DATE NULL,
+    is_deleted TINYINT NOT NULL,
+    stu_id VARCHAR(255) DEFAULT 0 NULL,
 );
-

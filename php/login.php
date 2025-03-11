@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     }
     // Prepare and execute the SQL query
-    $stmt = $database_connection->prepare("SELECT id, uuid, expired_date, school_email, password FROM students WHERE school_email = ?");
+    $stmt = $database_connection->prepare("SELECT id, uuid, expired_date, school_email, password FROM students WHERE school_email = ? AND id_deleted = 0");
     $stmt->bind_param("s", $email);
     $stmt->execute();
     $result = $stmt->get_result();
