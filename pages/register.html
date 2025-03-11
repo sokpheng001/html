@@ -75,6 +75,7 @@
                 class="register-form"
                 action="../php/register.php"
                 method="post"
+                enctype="multipart/form-data"
               >
                 <div class="form-section">
                   <h4>ព័ត៌មានផ្ទាល់ខ្លួន</h4>
@@ -86,6 +87,7 @@
                         id="khmer-name"
                         name="khmer-name"
                         required
+                        placeholder="គឹម ចាន់សុផេង"
                       />
                     </div>
                     <div class="form-group">
@@ -95,6 +97,7 @@
                         id="latin-name"
                         name="latin-name"
                         required
+                        placeholder="Kim Chansokpheng"
                       />
                     </div>
                   </div>
@@ -149,22 +152,60 @@
                     </div>
                   </div>
                 </div>
+                <!-- Add this new section for student photo upload -->
+                <div class="form-group">
+                  <label for="student-photo">រូបថតនិស្សិត (4 x 6cm)</label>
+                  <input
+                    type="file"
+                    id="student-photo"
+                    name="student-photo"
+                    accept="image/jpeg, image/png"
+                    required
+                    onchange="previewImage(event)"
+                  />
+                  <p class="note">
+                    សូមផ្ទុកឡើងរូបថតដែលមានវិមាត្រ 4 x 6cm (អត្ថសញ្ញា JPEG ឬ
+                    PNG)។
+                  </p>
+
+                  <!-- Image Preview Section -->
+                  <div id="preview-container" style="margin-top: 10px">
+                    <img
+                      id="preview-image"
+                      src=""
+                      alt="រូបថតនិស្សិត"
+                      style="
+                        display: none;
+                        width: 120px;
+                        height: 180px;
+                        border: 1px solid #ccc;
+                        object-fit: cover;
+                      "
+                    />
+                  </div>
+                </div>
 
                 <div class="form-section">
                   <h4>ព័ត៌មានទំនាក់ទំនង</h4>
                   <div class="form-row">
                     <div class="form-group">
-                      <label for="email">អ៊ីមែល (Optional)</label>
+                      <label for="email">អ៊ីមែល</label>
                       <input
                         type="email"
                         id="email"
                         name="email"
-                        placeholder="koko123@gmail.com"
+                        placeholder="sokpheng123@gmail.com"
                       />
                     </div>
                     <div class="form-group">
                       <label for="phone">លេខទូរស័ព្ទ</label>
-                      <input type="tel" id="phone" name="phone" required />
+                      <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        required
+                        placeholder="0975545227"
+                      />
                     </div>
                   </div>
                 </div>
@@ -269,5 +310,39 @@
         </p>
       </div>
     </footer>
+    <!-- Sript -->
+    <script>
+      function previewImage(event) {
+        const input = event.target;
+        const preview = document.getElementById("preview-image");
+
+        if (input.files && input.files[0]) {
+          const reader = new FileReader();
+
+          reader.onload = function (e) {
+            preview.src = e.target.result;
+            preview.style.display = "block";
+          };
+
+          reader.readAsDataURL(input.files[0]); // Read file as Data URL
+        }
+      }
+      //
+      // document
+      //   .getElementById("registrationForm")
+      //   .addEventListener("submit", function (e) {
+      //     let fileInput = document.getElementById("student-photo");
+      //     let filePath = fileInput.value;
+      //     let allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
+
+      //     if (!allowedExtensions.exec(filePath)) {
+      //       alert(
+      //         "❌ Invalid file format! Please upload a JPG, JPEG, or PNG image."
+      //       );
+      //       fileInput.value = ""; // Clear the input field
+      //       e.preventDefault(); // Stop form submission
+      //     }
+      //   });
+    </script>
   </body>
 </html>

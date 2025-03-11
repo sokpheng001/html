@@ -18,10 +18,21 @@
 
     // Constructor
     public function __construct(
-        ?int $id = null, string $uuid = '', string $khmerName = '', string $latinName = '',
-        ?string $fatherName = null, ?string $motherName = null, ?DateTime $dateOfBirth = null, string $placeOfBirth = '',
-        ?string $originalEmail = null, ?string $schoolEmail = null, string $phoneNumber = '', string $password = '', 
-        string $profile = '', string $major = '', DateTime $exipred_date
+        ?int $id = null, 
+        ?string $uuid = null, 
+        ?string $khmerName = null, 
+        ?string $latinName = null,
+        ?string $fatherName = null, 
+        ?string $motherName = null, 
+        ?DateTime $dateOfBirth = null, 
+        ?string $placeOfBirth = null,
+        ?string $originalEmail = null, 
+        ?string $schoolEmail = null, 
+        ?string $phoneNumber = null, 
+        ?string $password = null, 
+        ?string $profile = null, 
+        ?string $major = null,
+        ?DateTime $expired_date = null // Now optional
     ) {
         $this->id = $id;
         $this->uuid = $uuid;
@@ -37,8 +48,9 @@
         $this->password = $password;
         $this->profile = $profile;
         $this->major = $major;
-        $this->exipred_date = $exipred_date;
+        $this->exipred_date = $expired_date;
     }
+
 
 // Setters
     public function setId(int $id): void {

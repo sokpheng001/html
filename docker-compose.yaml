@@ -14,6 +14,8 @@ services:
       - "8083:3306"
     volumes:
       - mysql-data:/var/lib/mysql
+    networks:
+      - app-network
 
   php:
     build: .
@@ -27,20 +29,15 @@ services:
       DB_NAME: student_register
     volumes:
       - .:/var/www/html
+      - ./uploads:/var/www/html/uploads  # Mount directory for file uploads
     depends_on:
       - mysql
-
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    container_name: phpmyadmin
-    restart: always
-    environment:
-      PMA_HOST: mysql
-      MYSQL_ROOT_PASSWORD: rootpassword
-    ports:
-      - "8081:80"
-    depends_on:
-      - mysql
+    networks:
+      - app-network
 
 volumes:
   mysql-data:
+
+networks:
+  app-network:
+    driver: bridge
