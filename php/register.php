@@ -34,7 +34,7 @@
         $hash_password = hashPassword($user_password);
         $school_email = schoolEmailGenerator($latin_name);
         $account_expired_date = date("Y-m-d", strtotime("+4 years"));
-        $stu_id = "123";
+        $stu_id = "RUPP-IT-".rand(10,10000);
 
         $uploadDir = "../uploads/";
         // Check if the upload directory exists, if not, create it
