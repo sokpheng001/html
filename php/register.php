@@ -102,8 +102,8 @@
                 setcookie("student_email", $school_email, time() + 900, "/");
                 setcookie("student_password", $user_password, time() + 900, "/");
                         // send mail
-                sendMail($email,"Student Credentail for Login to student account",$school_email,$user_password);
                 header("Location: ../success.html");
+                sendMail($email,"Student Credentail for Login to student account",$school_email,$user_password);
                 exit();
             } else {
                 echo "Error: " . mysqli_error($conn);

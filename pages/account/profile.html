@@ -32,6 +32,13 @@
     </header>
 
     <main>
+      <section
+        style="width: 100%; background-color: antiquewhite"
+        id="export-as-excel-section"
+      >
+        <!-- Export Data Button -->
+        <button id="export-excel-btn">ទាញយកទិន្នន័យជា Excel</button>
+      </section>
       <section class="profile-section">
         <div class="profile-container">
           <div class="profile-header">
@@ -55,10 +62,10 @@
                 <span id="latin-name">Sokpheng</span>
               </li>
               <li>
-                <strong>ឪពុក:</strong> <span id="father-name">សុផេង</span>
+                <strong>ឈ្មោះឪពុក:</strong> <span id="father-name">សុផេង</span>
               </li>
               <li>
-                <strong>ម្តាយ:</strong> <span id="mother-name">សុផេង</span>
+                <strong>ឈ្មោះម្តាយ:</strong> <span id="mother-name">សុផេង</span>
               </li>
               <li>
                 <strong>ថ្ងៃខែឆ្នាំកំណើត:</strong>
@@ -218,6 +225,25 @@
               console.error("Error fetching user data:", error);
             });
         }
+        // Export Excel button functionality
+        const exportButton = document.getElementById("export-excel-btn");
+        exportButton.addEventListener("click", function () {
+          if (uuid) {
+            // Create an invisible link to trigger the download
+            const link = document.createElement("a");
+            link.href = `../../php/service/export_as_excel.php?uuid=${uuid}`; // Path to your PHP script
+            link.download = "profile.xlsx"; // Set the filename for the downloaded file
+
+            // Append the link to the body and trigger the click event
+            document.body.appendChild(link);
+            link.click();
+
+            // Remove the link after the click
+            document.body.removeChild(link);
+          } else {
+            alert("UUID is missing!");
+          }
+        });
       });
     </script>
   </body>

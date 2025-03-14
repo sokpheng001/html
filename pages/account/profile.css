@@ -7,13 +7,14 @@
   --light-gray: #f7f7f7;
   --white: #ffffff;
   --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  --khmer-font: "Kantumruy Pro", "Battambang", "Khmer OS", "Khmer OS System", sans-serif;
+  --khmer-font: "Kantumruy Pro", "Battambang", "Khmer OS", "Khmer OS System",
+    sans-serif;
   --heading-font: "Moul", var(--khmer-font);
 }
 /* Kantumruy Pro Regular Font */
 @font-face {
   font-family: "Kantumruy Pro";
-  src: url('../../fonts/KantumruyPro-Regular.ttf') format('truetype');
+  src: url("../../fonts/KantumruyPro-Regular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -50,6 +51,17 @@ header {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 2rem;
+}
+#export-excel-btn {
+  background-color: var(--primary-color);
+  color: var(--light-gray);
+  padding: 12px;
+  cursor: pointer;
+  border: none;
+  margin-right: 0px;
+  position: absolute;
+  border-radius: 8px 0px 0px 0px;
+  font-size: 1rem;
 }
 
 .logo {
@@ -129,7 +141,6 @@ main {
   border-radius: 8px;
   padding: 2rem;
   box-shadow: var(--shadow);
-  
 }
 
 .profile-container {
