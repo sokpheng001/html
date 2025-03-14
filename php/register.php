@@ -36,7 +36,6 @@
         $school_email = schoolEmailGenerator($latin_name);
         $account_expired_date = date("Y-m-d", strtotime("+4 years"));
 
-
         $uploadDir = "../uploads/";
         // Check if the upload directory exists, if not, create it
         if (!is_dir($uploadDir)) {
@@ -44,7 +43,7 @@
         }
         // read base url
         $env_location =  __DIR__ . '/../.env';
-        $env = parse_ini_file($this->envPath);
+        $env = parse_ini_file($env_location);
         $base_url = $env["WEB_URL"];
 
         $filePath = null;
@@ -72,8 +71,6 @@
         if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
         }
-
-
         $sql = "INSERT INTO students (password, uuid, latin_name, khmer_name, father_name, mother_name, 
                 date_of_birth, place_of_birth, gender, school_email, original_email, phone_number, 
                 major, expired_date, profile) 
@@ -110,12 +107,10 @@
             } else {
                 echo "Error: " . mysqli_error($conn);
             }
-
             mysqli_stmt_close($stmt);
         } else {
             echo "Error preparing statement: " . mysqli_error($conn);
         }
-
         mysqli_close($conn);
     } else {
         header("Location: ./register.html");
