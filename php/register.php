@@ -17,7 +17,6 @@
         $phone = $_POST['phone'];
         $major = $_POST['major'];
 
-
         // Age validation
         $today = new DateTime();
         $dob = new DateTime($date_of_birth);
@@ -35,6 +34,7 @@
         $hash_password = hashPassword($user_password);
         $school_email = schoolEmailGenerator($latin_name);
         $account_expired_date = date("Y-m-d", strtotime("+4 years"));
+        $stu_id = "123";
 
         $uploadDir = "../uploads/";
         // Check if the upload directory exists, if not, create it
@@ -53,7 +53,7 @@
             $targetFile = $uploadDir . $uuidFileName;
             $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
             $allowedTypes = ["jpg", "jpeg", "png"];
-        
+
             if (in_array($imageFileType, $allowedTypes)) {
                 if (move_uploaded_file($_FILES["student-photo"]["tmp_name"], $targetFile)) {
                     $filePath = $base_url. "/uploads/". $uuidFileName; // Store file path for database insertion
@@ -73,13 +73,13 @@
         }
         $sql = "INSERT INTO students (password, uuid, latin_name, khmer_name, father_name, mother_name, 
                 date_of_birth, place_of_birth, gender, school_email, original_email, phone_number, 
-                major, expired_date, profile) 
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                major, expired_date, profile, stu_id) 
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
 
         if ($stmt = mysqli_prepare($conn, $sql)) {
             mysqli_stmt_bind_param(
                 $stmt,
-                "sssssssssssssss",
+                "ssssssssssssssss",
                 $hash_password,
                 $uuid,
                 $latin_name,
@@ -94,7 +94,8 @@
                 $phone,
                 $major,
                 $account_expired_date,
-                $filePath
+                $filePath,
+                $stu_id
             );
 
             if (mysqli_stmt_execute($stmt)) {
