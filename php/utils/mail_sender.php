@@ -151,4 +151,5 @@
             echo "Email sending failed: {$mail->ErrorInfo}";
         }
     }
+    ob_end_flush();
 ?>
