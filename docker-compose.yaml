@@ -28,15 +28,15 @@ services:
       DB_PASSWORD: userpassword
       DB_NAME: student_register
     volumes:
-      - .:./uploads
-      - ./uploads:./uploads  # Mount directory for file uploads
+      - .:/var/www/html
+      - ./uploads:/var/www/html/uploads
     depends_on:
       - mysql
     networks:
       - app-network
-    # user: "www-data"  # Ensure PHP runs as www-data
-    # command: >
-    #   sh -c "mkdir -p /var/www/html/uploads && chown -R www-data:www-data /var/www/html/uploads && apache2-foreground"
+    user: "www-data"  # Ensure PHP runs as www-data
+    command: >
+      sh -c "mkdir -p /var/www/html/uploads && chown -R www-data:www-data /var/www/html/uploads && apache2-foreground"
 
 volumes:
   mysql-data:
