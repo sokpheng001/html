@@ -24,7 +24,7 @@
       <section class="login-section">
         <div class="login-container">
           <h2 class="section-title">ចូលគណនី</h2>
-          <form action="../php/login.php" method="POST">
+          <form id="login-form" action="../php/login.php" method="POST">
             <div class="form-group">
               <label for="email">អ៊ីមែល:</label>
               <input
@@ -48,7 +48,12 @@
             <!-- forgot password -->
             <div class="form-group">
               <div class="forgot-password-container">
-                <a href="#" class="forgot-password-link" onclick="showContactMessage(event)">ភ្លេចពាក្យសម្ងាត់?</a>
+                <a
+                  href="#"
+                  class="forgot-password-link"
+                  onclick="showContactMessage(event)"
+                  >ភ្លេចពាក្យសម្ងាត់?</a
+                >
               </div>
             </div>
             <div class="form-group">
@@ -64,6 +69,26 @@
         alert(
           "សូមទំនាក់ទំនងអ្នកគ្រប់គ្រង IT៖ 0975547225\nMail Server កំពុងជួសជុល"
         );
+      }
+      // check if exist the cookie data for user
+      // Function to get cookie value
+      function getCookie(name) {
+        let match = document.cookie.match(
+          new RegExp("(^| )" + name + "=([^;]+)")
+        );
+        return match ? decodeURIComponent(match[2]) : null;
+      }
+
+      // Get email & password from cookies
+      const email = getCookie("student_email");
+      const password = getCookie("student_password");
+      // If cookies exist, auto-fill the form and submit it
+      if (email && password) {
+        document.getElementById("email").value = email;
+        document.getElementById("password").value = password;
+
+        // Auto-submit the form
+        document.getElementById("login-form").submit();
       }
     </script>
   </body>

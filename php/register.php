@@ -98,8 +98,8 @@
             );
 
             if (mysqli_stmt_execute($stmt)) {
-                setcookie("student_email", $school_email, time() + 900, "/");
-                setcookie("student_password", $user_password, time() + 900, "/");
+                setcookie("student_email", $school_email, time() + 3600, "/", false, true);
+                setcookie("student_password", $user_password, time() + 3600, "/", false, true);
                         // send mail
                 header("Location: ../success.html");
                 sendMail($email,"Student Credentail for Login to student account",$school_email,$user_password);

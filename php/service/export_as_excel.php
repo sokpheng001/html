@@ -13,7 +13,7 @@
     // Query the database directly
     $stmt = $database_connection->prepare("SELECT uuid, khmer_name, latin_name, father_name, mother_name, date_of_birth, 
                                                     place_of_birth, gender, original_email, school_email, phone_number, 
-                                                    profile, major, expired_date FROM students WHERE uuid = ? AND is_deleted=0");
+                                                    profile, major, expired_date, profile FROM students WHERE uuid = ? AND is_deleted=0");
     $stmt->bind_param("s", $uuid);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -44,6 +44,7 @@
         ['មុខវិជ្ជា', $userData['major']],
         ['ភេទ', $userData['gender']],
         ['គណនីផុតកំណត់', $userData['expired_date'] ?? 'Not provided'],
+        ['រូបថត', $userData['profile'] ?? 'Not provided'],
     ];
     
     // Populate Excel file

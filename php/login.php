@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (password_verify($password, $user['password'])) {
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['email'] = $user['school_email'];
-            echo "<script>alert('ចូលបានជោគជ័យ!'); window.location.href='../pages/account/profile.html?id={$user['uuid']}';</script>";
+            echo "<script> window.location.href='../pages/account/profile.html?id={$user['uuid']}';</script>";
         } else {
             echo "<script>alert('ពាក្យសម្ងាត់មិនត្រឹមត្រូវ!'); window.location.href='../pages/login.html';</script>";
         }

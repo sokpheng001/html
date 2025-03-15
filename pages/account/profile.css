@@ -152,9 +152,9 @@ main {
 }
 
 .profile-picture {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
+  width: 120px;
+  height: 180px;
+  border-radius: 4px;
   object-fit: cover;
   margin-bottom: 1rem;
   box-shadow: var(--shadow);
@@ -282,6 +282,15 @@ footer {
   padding-left: 2rem;
   padding-right: 2rem;
 }
+.reset-password-container{
+  margin-top: 4px;
+}
+.reset-password-btn{
+  padding: 6px;
+  cursor: pointer;
+  background-color: var(--primary-color);
+  color: var(--white);
+}
 
 @media (max-width: 768px) {
   .header-container {
@@ -313,6 +322,23 @@ footer {
   .footer-container {
     grid-template-columns: 1fr;
     text-align: center;
+  }
+  #school-email {
+    font-size: 15px;
+  }
+  .profile-header {
+    margin-top: 2rem;
+  }
+  #export-excel-btn {
+    background-color: var(--primary-color);
+    color: var(--light-gray);
+    padding: 12px;
+    cursor: pointer;
+    border: none;
+    margin-right: 0px;
+    position: absolute;
+    border-radius: 8px 8px 0px 0px;
+    font-size: 0.8rem;
   }
 
   .footer-column h3::after {

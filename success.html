@@ -38,8 +38,8 @@
       <div class="success-message">
         <h2>✅ ការចុះឈ្មោះរបស់អ្នកបានជោគជ័យ!</h2>
         <p>
-          សូមពិនិត្យ Email
-          ដើម្បីបានទទួលនៅព័ត៍មានសម្រាប់ចូលគណនី។ សូមអរគុណសម្រាប់ការចុះឈ្មោះ។
+          សូមពិនិត្យ Email ដើម្បីបានទទួលនៅព័ត៍មានសម្រាប់ចូលគណនី។
+          សូមអរគុណសម្រាប់ការចុះឈ្មោះ។
         </p>
         <a href="../pages/login.html" class="btn">ចូលទៅកាន់គណនីរបស់អ្នក</a>
         <!-- <section>
@@ -125,14 +125,6 @@
       </div>
     </footer>
     <script>
-      // Function to get cookie value
-      function getCookie(name) {
-        let match = document.cookie.match(
-          new RegExp("(^| )" + name + "=([^;]+)")
-        );
-        return match ? decodeURIComponent(match[2]) : null;
-      }
-
       // Function to copy text from input fields
       function copyToClipboard(elementId) {
         let input = document.getElementById(elementId);
@@ -141,6 +133,13 @@
         navigator.clipboard.writeText(input.value).then(() => {
           alert("បានចម្លងទៅក្តារចម្លង! ✅");
         });
+      }
+      // Function to get cookie value
+      function getCookie(name) {
+        let match = document.cookie.match(
+          new RegExp("(^| )" + name + "=([^;]+)")
+        );
+        return match ? decodeURIComponent(match[2]) : null;
       }
 
       // Get email & password from cookies

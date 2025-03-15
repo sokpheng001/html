@@ -129,6 +129,7 @@ main {
   cursor: pointer;
   transition: var(--transition);
   width: 100%;
+  font-family: var(--khmer-font), sans-serif; /* Add this line */
 }
 
 .login-btn:hover {
