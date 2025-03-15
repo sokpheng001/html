@@ -1,7 +1,10 @@
-<?php
+<?php 
+    
     use PHPMailer\PHPMailer\PHPMailer;
     use PHPMailer\PHPMailer\Exception;
+    
     require_once __DIR__ . '/../../vendor/autoload.php';
+    
 
     function sendMail($to, $subject, $email, $password): void {
         $mail = new PHPMailer(true);
@@ -10,7 +13,7 @@
             $mail->isSMTP();
             $mail->Host = 'smtp.gmail.com'; // Use your mail server
             $mail->SMTPAuth = true;
-            $mail->Username = "piu9066@gmail.com";
+            $mail->Username = 'piu9066@gmail.com';
             $mail->Password = 'fnat dett bbpo gces'; // Use App Password, NOT your real password
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
             $mail->Port = 587;
@@ -121,7 +124,7 @@
                         <div class="success-message">
                             <h2>✅ ការចុះឈ្មោះរបស់អ្នកបានជោគជ័យ!</h2>
                             <p>សូមអរគុណសម្រាប់ការចុះឈ្មោះ។ យើងនឹងទាក់ទងអ្នកឆាប់ៗនេះ។</p>
-                            <a href="../pages/login.html" class="btn">ចូលទៅកាន់គណនីរបស់អ្នក</a>
+                            <a href="https://register.sokpheng.com/pages/login.html" class="btn">ចូលទៅកាន់គណនីរបស់អ្នក</a>
                             <section>
                                 <div id="user-credentials" class="credentials-container">
                                     <label for="email-input">📧 អ៊ីមែល:</label>

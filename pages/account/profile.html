@@ -229,6 +229,8 @@
         const exportButton = document.getElementById("export-excel-btn");
         exportButton.addEventListener("click", function () {
           if (uuid) {
+            console.log("Exporting data for UUID:", uuid); // Log the UUID for debugging
+
             // Create an invisible link to trigger the download
             const link = document.createElement("a");
             link.href = `../../php/service/export_as_excel.php?uuid=${uuid}`; // Path to your PHP script
@@ -241,6 +243,7 @@
             // Remove the link after the click
             document.body.removeChild(link);
           } else {
+            console.error("UUID is missing!");
             alert("UUID is missing!");
           }
         });

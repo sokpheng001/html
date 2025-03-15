@@ -1,42 +1,37 @@
 <?php
-    
-
     use PhpOffice\PhpSpreadsheet\Spreadsheet;
     use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
-    require_once __DIR__ . '/../../vendor/autoload.php';    
-
-    $uuid = $_GET['uuid']; // Get the UUID from the query string
-
-    // Prepare POST data to send to fetch_user.php
-    $postData = http_build_query([
-        'uuid' => $uuid
-    ]);
-
-    // Initialize cURL to send a POST request to fetch_user.php
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, './fetch_user.php');  // Adjust to your actual PHP file path
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_POST, true);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, $postData);
-    $response = curl_exec($ch);
-    curl_close($ch);
-
-    // Decode the response into an array
-    $userData = json_decode($response, true);
-    // Check if the user data was successfully retrieved
-    if (!$userData || !$userData['success']) {
-        die('Error fetching user data.');
+    require_once __DIR__ . '/../../vendor/autoload.php';
+    require_once __DIR__. '/../utils/database_connect.php';  // Connect to DB
+    
+    // Check if UUID is set
+    if (!isset($_GET['uuid']) || empty($_GET['uuid'])) {
+        die("Error: UUID is required");
     }
-
-    // Create new Spreadsheet object
+    $uuid = trim($_GET['uuid']);
+    
+    // Query the database directly
+    $stmt = $database_connection->prepare("SELECT uuid, khmer_name, latin_name, father_name, mother_name, date_of_birth, 
+                                                    place_of_birth, gender, original_email, school_email, phone_number, 
+                                                    profile, major, expired_date FROM students WHERE uuid = ? AND is_deleted=0");
+    $stmt->bind_param("s", $uuid);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    
+    if ($result->num_rows !== 1) {
+        die("Error: User not found");
+    }
+    $userData = $result->fetch_assoc();
+    $stmt->close();
+    $database_connection->close();
+    
+    // Create Excel file
     $spreadsheet = new Spreadsheet();
     $sheet = $spreadsheet->getActiveSheet();
-
-    // Set headers for the Excel file
     $sheet->setCellValue('A1', 'Field');
     $sheet->setCellValue('B1', 'Value');
-
-    // Map the user data to the Excel format
+    
+    // Map user data
     $data = [
         ['ឈ្មោះខ្មែរ', $userData['khmer_name']],
         ['ឈ្មោះឡាតាំង', $userData['latin_name']],
@@ -50,22 +45,22 @@
         ['ភេទ', $userData['gender']],
         ['គណនីផុតកំណត់', $userData['expired_date'] ?? 'Not provided'],
     ];
-
-    // Loop through the data and populate the Excel file
-    $row = 2; // Starting row for data
+    
+    // Populate Excel file
+    $row = 2;
     foreach ($data as $item) {
         $sheet->setCellValue('A' . $row, $item[0]);
         $sheet->setCellValue('B' . $row, $item[1]);
         $row++;
     }
-
-    // Write the Excel file to output
+    
+    // Output file
     header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-    header('Content-Disposition: attachment;filename="profile.xlsx"'); // Trigger file download with name "profile.xlsx"
+    header('Content-Disposition: attachment;filename="profile.xlsx"');
     header('Cache-Control: max-age=0');
-
-    // Save the Excel file to the output buffer
+    
     $writer = new Xlsx($spreadsheet);
     $writer->save('php://output');
     exit;
+
 ?>

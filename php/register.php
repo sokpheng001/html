@@ -3,6 +3,7 @@
     require_once './utils/customize_hashing.php';
     require_once './utils/database_connect.php';
     require_once './utils/email_generator_config.php';
+    require_once __DIR__. '/./utils/environment.php';
     require_once'./utils/mail_sender.php';
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -42,9 +43,7 @@
             mkdir($uploadDir, 0777, true); // Creates the directory with proper permissions
         }
         // read base url
-        $env_location =  __DIR__ . '/../.env';
-        $env = parse_ini_file($env_location);
-        $base_url = $env["WEB_URL"];
+        $base_url = $web_url;
 
         $filePath = null;
         if (!empty($_FILES["student-photo"]["name"])) {
