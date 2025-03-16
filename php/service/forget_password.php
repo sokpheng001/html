@@ -5,7 +5,6 @@ require '../utils/database_connect.php'; // Include database connection
 header('Content-Type: application/json'); // Ensure JSON response
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $old_password = trim($_POST['old_password']);
     $email = trim($_POST['email']);
     $new_password = trim($_POST['new_password']);
     $confirm_password = trim($_POST['confirm_password']);
@@ -22,20 +21,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Prepare and execute the SQL query to fetch the user by email
-    $stmt = $database_connection->prepare("SELECT id, password FROM students WHERE school_email = ? AND is_deleted = 0");
+    $stmt = $database_connection->prepare("SELECT id FROM students WHERE school_email = ? AND is_deleted = 0");
     $stmt->bind_param("s", $email);
     $stmt->execute();
     $result = $stmt->get_result();
 
     if ($result->num_rows === 1) {
         $user = $result->fetch_assoc();
-        // check if right the old password
-        
-// CORRECT - Pass the raw password to password_verify
-        if (!password_verify($old_password, $user['password'])) {
-           echo json_encode(["success" => false, "message" => "⚠️ ពាក្រសម្ងាត់ចាស់មិនត្រឹមត្រូវ"]);
-           exit();
-        }
+
         // Hash the new password
         $hashed_password = password_hash($new_password, PASSWORD_DEFAULT);
 

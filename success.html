@@ -135,27 +135,27 @@
         });
       }
       // Function to get cookie value
-      function getCookie(name) {
-        let match = document.cookie.match(
-          new RegExp("(^| )" + name + "=([^;]+)")
-        );
-        return match ? decodeURIComponent(match[2]) : null;
-      }
+      // function getCookie(name) {
+      //   let match = document.cookie.match(
+      //     new RegExp("(^| )" + name + "=([^;]+)")
+      //   );
+      //   return match ? decodeURIComponent(match[2]) : null;
+      // }
 
       // Get email & password from cookies
-      const email = getCookie("student_email");
-      const password = getCookie("student_password");
+      // const email = getCookie("student_email");
+      // const password = getCookie("student_password");
 
-      if (email && password) {
-        // alert(
-        //   "The username and password will remove from page after 15 minutes. ⏳"
-        // );
-        document.getElementById("email-input").value = email;
-        document.getElementById("password-input").value = password;
-        document.getElementById("user-credentials").style.display = "block";
-      } else {
-        window.location.href = "../pages/not-found.html";
-      }
+      // if (email && password) {
+      //   // alert(
+      //   //   "The username and password will remove from page after 15 minutes. ⏳"
+      //   // );
+      //   document.getElementById("email-input").value = email;
+      //   document.getElementById("password-input").value = password;
+      //   document.getElementById("user-credentials").style.display = "block";
+      // } else {
+      //   window.location.href = "../pages/not-found.html";
+      // }
     </script>
   </body>
 </html>

@@ -32,9 +32,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (password_verify($password, $user['password'])) {
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['email'] = $user['school_email'];
+            // set data in cookie
+            setcookie("student_email", $user['school_email'], time() + 3600, "/", false, true);
+            setcookie("student_password", $password, time() + 3600, "/", false, true);
+            setcookie("student_uuid", $user["uuid"], time() + 3600, "/", false, true);
             echo "<script> window.location.href='../pages/account/profile.html?id={$user['uuid']}';</script>";
         } else {
-            echo "<script>alert('ពាក្យសម្ងាត់មិនត្រឹមត្រូវ!'); window.location.href='../pages/login.html';</script>";
+            echo "<script>alert('ពាក្យសម្ងាត់ ឬ អុីម៉ែល មិនត្រឹមត្រូវ!'); window.location.href='../pages/login.html';</script>";
+            
         }
     } else {
         echo "<script>alert('គណនីមិនមាន!'); window.location.href='../pages/login.html';</script>";

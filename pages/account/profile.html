@@ -47,6 +47,14 @@
               alt="Profile Picture"
               class="profile-picture"
               id="profile-picture"
+              style="cursor: pointer"
+            />
+            <!-- for update new image -->
+            <input
+              type="file"
+              id="profile-upload"
+              accept="image/*"
+              style="display: none"
             />
             <h2 class="profile-name" id="profile-name">សុផេង</h2>
             <p class="profile-major" id="profile-major">វិស្វកម្មកម្មវិធី</p>
@@ -95,6 +103,7 @@
               <!-- <li><strong>លេខសម្ងាត់:</strong> <span id="password">********</span></li> -->
               <!-- Reset Password Button -->
               <div class="reset-password-container">
+                <button onclick="logout()" class="logout-btn">ចេញពីគណនី</button>
                 <button
                   onclick="window.location.href='reset-password.html'"
                   class="reset-password-btn"
@@ -164,99 +173,6 @@
       </div>
     </footer>
 
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const urlParams = new URLSearchParams(window.location.search);
-        const uuid = urlParams.get("id");
-
-        if (!uuid) {
-          window.location.href = "../not-found.html"; // Redirect if no uuid is provided
-          return;
-        }
-        if (uuid) {
-          fetch("../../php/service/fetch_user.php", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/x-www-form-urlencoded",
-            },
-            body: `uuid=${uuid}`,
-          })
-            .then((response) => response.json())
-            .then((data) => {
-              if (data.success) {
-                // Populate profile details with fetched data
-                document.getElementById("khmer-name").textContent =
-                  data.khmer_name;
-                document.getElementById("profile-name").textContent =
-                  data.khmer_name;
-                document.getElementById("profile-name-title").textContent =
-                  "គណនី - " + data.khmer_name;
-                document.getElementById("latin-name").textContent =
-                  data.latin_name;
-                document.getElementById("father-name").textContent =
-                  data.father_name;
-                document.getElementById("mother-name").textContent =
-                  data.mother_name;
-                document.getElementById("date-of-birth").textContent =
-                  data.date_of_birth;
-                document.getElementById("place-of-birth").textContent =
-                  data.place_of_birth;
-                document.getElementById("school-email").textContent =
-                  data.school_email || "Not provided";
-                document.getElementById("phone-number").textContent =
-                  data.phone_number;
-                document.getElementById("major").textContent = data.major;
-                document.getElementById("profile-major").textContent =
-                  data.major;
-                document.getElementById("gender").textContent = data.gender;
-                document.getElementById("expired_date").textContent =
-                  data.expired_date || "02-21-2025";
-
-                var currentDate = new Date();
-                var expiredDate = new Date(data.expired_date);
-                // Check if the account has expired
-                if (expiredDate < currentDate) {
-                  alert("⚠️ គណនីរបស់អ្នកបានផុតកំណត់!");
-                  window.location.href = "../not-found.html"; // Redirect on error
-                  return; // Prevent form submission if expired
-                }
-
-                // If you have a profile image URL, you can also update the profile picture
-                if (data.profile) {
-                  document.querySelector(".profile-picture").src = data.profile;
-                }
-              } else {
-                console.error("User not found");
-                window.location.href = "../not-found.html"; // Redirect on error
-              }
-            })
-            .catch((error) => {
-              console.error("Error fetching user data:", error);
-            });
-        }
-        // Export Excel button functionality
-        const exportButton = document.getElementById("export-excel-btn");
-        exportButton.addEventListener("click", function () {
-          if (uuid) {
-            console.log("Exporting data for UUID:", uuid); // Log the UUID for debugging
-
-            // Create an invisible link to trigger the download
-            const link = document.createElement("a");
-            link.href = `../../php/service/export_as_excel.php?uuid=${uuid}`; // Path to your PHP script
-            link.download = "profile.xlsx"; // Set the filename for the downloaded file
-
-            // Append the link to the body and trigger the click event
-            document.body.appendChild(link);
-            link.click();
-
-            // Remove the link after the click
-            document.body.removeChild(link);
-          } else {
-            console.error("UUID is missing!");
-            alert("UUID is missing!");
-          }
-        });
-      });
-    </script>
+    <script src="../../js/profile.js"></script>
   </body>
 </html>

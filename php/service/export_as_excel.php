@@ -57,7 +57,7 @@
     
     // Output file
     header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-    header('Content-Disposition: attachment;filename="profile.xlsx"');
+    header('Content-Disposition: attachment;filename='.$userData['latin_name'].'-profile.xlsx');
     header('Cache-Control: max-age=0');
     
     $writer = new Xlsx($spreadsheet);

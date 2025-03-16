@@ -285,11 +285,16 @@ footer {
 .reset-password-container{
   margin-top: 4px;
 }
-.reset-password-btn{
-  padding: 6px;
+.reset-password-btn, .logout-btn{
+  padding: 10px;
+  border: none;
   cursor: pointer;
+  border-radius: 8px;
   background-color: var(--primary-color);
   color: var(--white);
+}
+.logout-btn{
+  background-color: red;
 }
 
 @media (max-width: 768px) {
