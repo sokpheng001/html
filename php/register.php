@@ -110,8 +110,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         );
 
         if (mysqli_stmt_execute($stmt)) {
-            header("Location: ../success.html");
             sendMail($email, "Student Credentials for Login", $school_email, $user_password);
+            header("Location: ../success.html");
             exit();
         } else {
             echo "Error: " . mysqli_error($conn);
