@@ -1,5 +1,5 @@
-# Use an official PHP runtime as a parent image
-FROM php:7.4-apache
+# Use an official PHP 8.2 runtime as a parent image
+FROM php:8.2-apache
 
 # Set the working directory
 WORKDIR /var/www/html
@@ -26,4 +26,4 @@ RUN chmod +x /usr/local/bin/wait-for-it.sh
 EXPOSE 80
 
 # Use wait-for-it.sh to wait for MySQL to be ready
-CMD /usr/local/bin/wait-for-it.sh mysql:3306 --timeout=60 --strict -- apache2-foreground
+CMD /usr/local/bin/wait-for-it.sh mysql:3306 --timeout=60 --stri
