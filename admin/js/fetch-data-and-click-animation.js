@@ -7,7 +7,7 @@ function getAllStudents() {
 
   // Clear existing data before fetching new ones
   tableBody.innerHTML = "";
-  fetch("./php/service/student_service.php?read=true")
+  fetch("./php/services/student_service.php?read=true")
     .then((response) => {
       if (!response.ok) {
         console.log("Network response was not ok");
@@ -129,7 +129,7 @@ function startDeleteStudent() {
 
 function deleteUser(student_id) {
   // Send a POST request to delete the student by stu_id
-  fetch("../php/service/student_service.php", {
+  fetch("../php/services/student_service.php", {
     method: "POST",
     body: new URLSearchParams({
       delete: true,
