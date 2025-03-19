@@ -1,7 +1,4 @@
 <?php
-
-    // Initialize session
-    session_start   ();
 // using PDO
     // Include environment variables for database connection
     require_once __DIR__.'/../utils/environment_variable.php';
@@ -25,12 +22,10 @@
 
             // If the email exists, verify the password
             if ($admin && password_verify($password, $admin['password'])) {
-                // Store session data for the logged-in user
-                $_SESSION['admin_id'] = $admin['id'];
-                $_SESSION['admin_email'] = $admin['email'];
-                $_SESSION['admin_logged_in'] = true; // Set a flag to track if the admin is logged in
-                // Redirect to the dashboard or main page
-                header('Location: ../../index.html');
+                 // Store login data in cookies for 1 day (86400 seconds)
+                setcookie('admin_id', $admin['uuid'], time() + 86400, "/");  // Cookie for admin ID
+                setcookie('admin_logged_in', true, time() + 86400, "/");  // Cookie for admin logged-in status
+                header('Location: ../../pages/dashboard.html');
                 exit();
             } else {
                 // Display the error message in a JavaScript alert
