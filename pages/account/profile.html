@@ -34,10 +34,12 @@
     <main>
       <section
         style="width: 100%; background-color: antiquewhite"
-        id="export-as-excel-section"
+        id="export-as-pdf-section"
       >
         <!-- Export Data Button -->
-        <button id="export-excel-btn">ទាញយកទិន្នន័យជា Excel</button>
+        <button id="export-pdf-btn" onclick="printStudentInfoAsPDF()">
+          ទាញយកទិន្នន័យជា PDF
+        </button>
       </section>
       <section class="profile-section">
         <div class="profile-container">
@@ -172,7 +174,6 @@
         </p>
       </div>
     </footer>
-
     <script src="../../js/profile.js"></script>
   </body>
 </html>

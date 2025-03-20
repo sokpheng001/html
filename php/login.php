@@ -37,16 +37,20 @@
                 setcookie("student_password", $password, time() + 3600, "/", false, true);
                 setcookie("student_uuid", $user["uuid"], time() + 3600, "/", false, true);
                 setcookie("generated_hash", password_hash('123', PASSWORD_DEFAULT), time() + 3600, "/",false,true);
+                setcookie("generate_uuid",uniqid('', true), time() + 3600, "/",false,true);
                 echo "<script> window.location.href='../pages/account/profile.html?id={$user['uuid']}';</script>";
             } else {
                 echo "<script>alert('ពាក្យសម្ងាត់ ឬ អុីម៉ែល មិនត្រឹមត្រូវ!'); window.location.href='../pages/login.html';</script>";
 
             }
         } else {
+            setcookie("student_email", "", time() - 3600, "/"); // Expire the cookie
+            setcookie("student_password", "", time() - 3600, "/"); // Expire the cookie
+            setcookie("student_uuid", "", time() - 3600, "/"); // Expire the cookie
             echo "<script>alert('គណនីមិនមាន!'); window.location.href='../pages/login.html';</script>"; 
-        //     unset($_COOKIE["student_email"]); // Remove the key from the $_COOKIE superglobal array
-        //     unset($_COOKIE["student_password"]); // Remove the key from the $_COOKIE superglobal array
-        //     unset($_COOKIE["student_uuid"]); // Remove the key from the $_COOKIE superglobal array
+            // echo "<script>alert('គណនីមិនមាន!');</script>"; 
+
+
         //     // echo "<script> window.location.href='../pages/login.html';</script>";
 
         }

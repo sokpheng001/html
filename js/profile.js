@@ -6,6 +6,7 @@ function getCookie(name) {
   if (parts.length === 2) return parts.pop().split(";").shift();
   return null;
 }
+
 function checkStudentCookies() {
   // Check for student_email cookie
   const emailCookie = getCookie("student_email");
@@ -20,7 +21,54 @@ function checkStudentCookies() {
 if (!checkStudentCookies()) {
   window.location.href = "/";
 }
-// ------------------------------------
+// print as pdf
+function printStudentInfoAsPDF() {
+  document
+    .getElementById("export-pdf-btn")
+    .addEventListener("click", function () {
+      // Hide the header and footer elements
+      const header = document.querySelector("header");
+      const footer = document.querySelector("footer");
+
+      // Save the current display state of header and footer
+      const headerDisplay = header.style.display;
+      const footerDisplay = footer.style.display;
+
+      // Hide header and footer
+      header.style.display = "none";
+      footer.style.display = "none";
+
+      // Create a new style element to hide buttons and export section during printing
+      const style = document.createElement("style");
+
+      // Set the CSS rules to hide buttons and the export section during printing
+      style.innerHTML = `
+      @media print {
+        button, #export-excel-btn {
+          display: none !important;
+        }
+        #export-as-excel-section {
+          display: none !important;
+        }
+      }
+    `;
+
+      // Append the style element to the head of the document
+      document.head.appendChild(style);
+
+      // Trigger print
+      window.print();
+
+      // Restore the original display state after printing
+      setTimeout(() => {
+        header.style.display = headerDisplay;
+        footer.style.display = footerDisplay;
+        // Remove the added print styles after printing
+        document.head.removeChild(style);
+      }, 0);
+    });
+}
+// load student data from api
 document.addEventListener("DOMContentLoaded", function () {
   //
   const urlParams = new URLSearchParams(window.location.search);
@@ -85,6 +133,11 @@ document.addEventListener("DOMContentLoaded", function () {
         console.error("Error fetching user data:", error);
       });
   }
+});
+//
+
+//print as excel
+function printOneStudentInfoAsExcel() {
   // Export Excel button functionality
   const exportButton = document.getElementById("export-excel-btn");
   exportButton.addEventListener("click", function () {
@@ -107,7 +160,9 @@ document.addEventListener("DOMContentLoaded", function () {
       alert("UUID is missing!");
     }
   });
-});
+}
+//  ------------------------------------
+
 // logout
 function logout() {
   // remove data from cookie
@@ -129,7 +184,6 @@ const student_uuid = getCookie("student_uuid");
 profilePicture.addEventListener("click", () => {
   profileUpload.click(); // Open file dialog
 });
-
 // Handle the file input change (when a new image is selected)
 profileUpload.addEventListener("change", (event) => {
   const file = event.target.files[0]; // Get the selected file
@@ -161,7 +215,8 @@ function updateProfilePicture(file, uuid) {
       if (data.success) {
         alert("✅ រូបថតប្រវត្តិបានអាប់ដេតជោគជ័យ!");
       } else {
-        alert("⚠️ បរាជ័យក្នុងការអាប់ដេតរូបថតប្រវត្តិ");
+        alert(data?.message);
+        // alert("⚠️ បរាជ័យក្នុងការអាប់ដេតរូបថតប្រវត្តិ");
       }
     })
     .catch((error) => {

@@ -32,7 +32,8 @@ body {
 * {
   font-family: inherit;
 }
-.add-button.primary-button {
+.add-button.primary-button,
+.excel-export-button {
   background-color: var(--accent-color); /* Primary color */
   color: white; /* Text color */
   padding: 10px 20px; /* Button size */
@@ -43,11 +44,13 @@ body {
   transition: background-color 0.3s ease; /* Transition effect */
 }
 
-.add-button.primary-button:hover {
+.add-button.primary-button:hover,
+.xcel-export-button:hover {
   background-color: var(--accent-color); /* Darker primary color on hover */
 }
 
-.add-button.primary-button:active {
+.add-button.primary-button:active,
+.excel-export-button.primary-button:active {
   transform: scale(0.98); /* Slightly shrink on click */
 }
 

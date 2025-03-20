@@ -5,7 +5,6 @@ function getCookie(name) {
   return null; // Cookie not found
 }
 
-
 // Check if the admin is logged in by checking the 'admin_logged_in' cookie
 if (getCookie("admin_logged_in")) {
   //   window.location.reload();
@@ -25,3 +24,21 @@ function logout() {
   // Redirect to the login page
   window.location.href = "../index.html";
 }
+// export students's data as excel
+// Export Excel button functionality
+const exportButton = document.querySelector(".excel-export-button");
+exportButton.addEventListener("click", function () {
+  console.log("Exporting all student data...");
+
+  // Create an invisible link to trigger the download
+  const link = document.createElement("a");
+  link.href = "../php/services/export_as_excel.php"; // Path to your PHP script (without UUID)
+  link.download = "students-data.xlsx"; // Set the filename for the downloaded file
+
+  // Append the link to the body and trigger the click event
+  document.body.appendChild(link);
+  link.click();
+
+  // Remove the link after the click
+  document.body.removeChild(link);
+});

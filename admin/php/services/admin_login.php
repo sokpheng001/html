@@ -21,7 +21,7 @@
             $admin = $stmt->fetch(PDO::FETCH_ASSOC  );
 
             // If the email exists, verify the password
-            if ($admin && password_verify($password, $admin['password'])) {
+            if ($admin && password_verify($password, urldecode($admin['password']))) {
                  // Store login data in cookies for 1 day (86400 seconds)
                 setcookie('admin_id', $admin['uuid'], time() + 86400, "/");  // Cookie for admin ID
                 setcookie('admin_logged_in', true, time() + 86400, "/");  // Cookie for admin logged-in status
@@ -29,14 +29,14 @@
                 exit();
             } else {
                 // Display the error message in a JavaScript alert
-                echo "<script type='text/javascript'>alert('⚠️ អុីម៉៉ែល ឬ លេខសម្ងាត់មិនត្រឹមត្រូវ'); window.location.href = '../../status/login.html';</script>";
+                echo "<script type='text/javascript'>alert('⚠️ អុីម៉៉ែល ឬ លេខសម្ងាត់មិនត្រឹមត្រូវ'); window.location.href = '../../index.html';</script>";
                 exit();
             }
         } catch (PDOException $e) {
             // Display the error message in a JavaScript alert
             echo "<script type='text/javascript'>
                     alert('មានបញ្ហាក្នុងការតភ្ជាប់ទៅកាន់មូលដ្ឋានទិន្នន័យ: " . $e->getMessage() . "');
-                    window.location.href = '../../status/login.html';
+                    window.location.href = '../../index.html';
                 </script>";
         }
     }
