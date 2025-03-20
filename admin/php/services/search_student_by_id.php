@@ -4,26 +4,28 @@
     
     require_once '../utils/database_connect.php';
     
-    // Function to search student by ID
+    // Function to search for a student by ID (case-sensitive LIKE search)
     function searchStudentById($stu_id) {
         global $database_connection;
     
-        // SQL query to search for a student by stu_id
+        // SQL query using LIKE instead of =
         $sql = "SELECT uuid, khmer_name, latin_name, father_name, mother_name, date_of_birth, place_of_birth,
                        original_email, school_email, phone_number, profile, major, gender, expired_date, stu_id
-                FROM students WHERE stu_id = ? AND is_deleted = 0 LIMIT 1"; // Search only non-deleted students
+                FROM students WHERE stu_id LIKE ? AND is_deleted = 0 LIMIT 1"; 
     
         if ($stmt = mysqli_prepare($database_connection, $sql)) {
-            // Bind stu_id to the query
+            // Add wildcards for partial matching (e.g., searching "123" will match "12345")
+            $stu_id = $stu_id . '%';  // Adjust this to '%'.$stu_id.'%' for a more flexible search
+            
+            // Bind the parameter
             mysqli_stmt_bind_param($stmt, "s", $stu_id);
         
             // Execute the query
             mysqli_stmt_execute($stmt);
         
-            // Bind the result to variables
+            // Fetch results
             $result = mysqli_stmt_get_result($stmt);
             
-            // Check if any result is found
             if ($row = mysqli_fetch_assoc($result)) {
                 // Return the student data as JSON
                 echo json_encode($row, JSON_PRETTY_PRINT);
