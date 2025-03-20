@@ -10,6 +10,9 @@
   --khmer-font: "Kantumruy Pro", "Battambang", "Khmer OS", "Khmer OS System",
     sans-serif;
   --heading-font: "Moul", var(--khmer-font);
+  --medium-gray: #b0b0b0;
+  --radius: 8px;
+  --transition: 0.3s ease;
 }
 
 /* Kantumruy Pro Regular Font */
@@ -21,472 +24,114 @@
   font-display: swap;
 }
 
+/* Body and Page Styles */
 body {
-  font-family: var(--khmer-font), sans-serif;
+  font-family: var(--khmer-font);
+  background-color: var(--secondary-color);
+  color: var(--text-color);
   margin: 0;
   padding: 0;
-  background: linear-gradient(to right, #f0f2f5, #e6f2ff);
-}
-
-/* Ensure Khmer font applies to all elements */
-* {
-  font-family: inherit;
-}
-.add-button.primary-button {
-  background-color: var(--accent-color); /* Primary color */
-  color: white; /* Text color */
-  padding: 10px 20px; /* Button size */
-  border: none; /* Remove border */
-  border-radius: 5px; /* Rounded corners */
-  cursor: pointer; /* Change cursor on hover */
-  font-size: 16px; /* Font size */
-  transition: background-color 0.3s ease; /* Transition effect */
-}
-
-.add-button.primary-button:hover {
-  background-color: var(--accent-color); /* Darker primary color on hover */
-}
-
-.add-button.primary-button:active {
-  transform: scale(0.98); /* Slightly shrink on click */
-}
-
-.main-container {
   display: flex;
-  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
-/* Sidebar Styles */
-.sidebar {
-  background: var(--primary-color);
-  color: var(--white);
-  width: 250px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100%;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+main {
+  width: 100%;
+  max-width: 500px;
+  padding: 1rem;
+}
+/* Add styles for the "Forgot Password" link */
+.forgot-password-container {
+  text-align: right;
+  margin-top: 0.5rem;
+}
+
+.forgot-password-link {
+  font-size: 0.9rem;
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: bold;
+  transition: var(--transition);
+}
+
+.forgot-password-link:hover {
+  color: var(--accent-color);
+  text-decoration: underline;
+}
+
+.header-container {
   display: flex;
-  flex-direction: column;
-  padding-bottom: 20px;
-  z-index: 10; /* Ensure sidebar is above other content */
+  justify-content: center;
+  margin-bottom: 1rem;
 }
 
-.sidebar-logo {
-  padding: 20px;
-  text-align: center;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+/* Login Section */
+.login-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.sidebar-logo img {
-  width: 60px;
-  height: 60px;
-  margin-bottom: 10px;
-}
-
-.sidebar-logo h2 {
-  font-size: 1.2rem;
-  font-family: var(--heading-font);
-  margin: 0;
-}
-
-.sidebar nav {
-  flex-grow: 1;
-}
-
-.sidebar ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.sidebar li {
-  margin-bottom: 0;
-}
-
-.sidebar a {
-  display: block;
-  padding: 15px 20px;
-  text-decoration: none;
-  color: var(--white);
-  font-weight: 500;
-  transition: background-color 0.3s ease;
-  border-left: 5px solid transparent;
-}
-
-.sidebar a:hover,
-.sidebar a.active {
-  background-color: rgba(255, 255, 255, 0.1);
-  border-left-color: var(--accent-color);
-}
-
-/* Logout Button Styles */
-.logout-button {
-  display: block;
-  padding: 15px 20px;
-  text-decoration: none;
-  color: var(--white);
-  font-weight: 500;
-  background-color: #ff4444; /* Red background color */
-  text-align: center;
-  margin-top: auto; /* Push to the bottom */
-  transition: background-color 0.3s ease;
-}
-
-.logout-button:hover {
-  background-color: #ff0000; /* Darker red on hover */
-}
-
-/* Main Content Styles */
-.main-content {
-  margin-left: 240px;
-  padding: 5px;
-  width: calc(100% - 250px);
-  transition: margin-left 0.3s ease;
-}
-
-.manage-section {
+.login-container {
   background-color: var(--white);
-  border-radius: 10px;
-  padding: 30px;
+  padding: 2rem;
+  border-radius: var(--radius);
   box-shadow: var(--shadow);
-  margin-bottom: 30px;
+  width: 100%;
 }
 
 .section-title {
-  margin-bottom: 20px;
-  font-family: var(--heading-font);
-  color: var(--text-color);
-}
-
-.manage-controls {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-  flex-wrap: wrap;
-  gap: 15px;
-}
-
-.search-bar {
-  display: flex;
-  gap: 10px;
-  flex: 1;
-  max-width: 500px;
-}
-
-.search-bar input {
-  flex: 1;
-  padding: 12px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  font-size: 1rem;
-}
-.search-bar input:focus {
-  outline: var(--primary-color);
-}
-
-.search-button {
-  background-color: var(--primary-color);
-  color: var(--white);
-  border: none;
-  padding: 12px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: background-color 0.3s ease;
-}
-
-.search-button:hover {
-  background-color: #083b6f;
-}
-
-.add-button {
-  padding: 12px 20px;
-  font-size: 1rem;
-}
-
-.student-table {
-  overflow-x: auto;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  background-color: var(--white);
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-  min-width: 1200px; /* Ensure table has a minimum width to prevent wrapping */
-}
-
-th,
-td {
-  padding: 15px;
-  text-align: left;
-  border-bottom: 1px solid #ddd;
-  font-family: var(--khmer-font), sans-serif; /* Ensure font applies here */
-  white-space: nowrap; /* Prevent text wrapping within cells */
-  overflow: hidden; /* Hide overflow text */
-  text-overflow: ellipsis; /* Add ellipsis for overflow */
-}
-
-th {
-  background-color: var(--primary-color);
-  color: var(--white);
-  font-weight: 600;
-  font-family: var(--khmer-font), sans-serif; /* Ensure font applies here */
-}
-
-tr:hover {
-  background-color: var(--secondary-color);
-}
-
-.action-button {
-  padding: 8px 15px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: 600;
-  margin-right: 5px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.action-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.edit {
-  background-color: #ffd700;
-  color: var(--text-color);
-  font-family: var(--khmer-font), sans-serif; /* Ensure font applies here */
-}
-
-.edit:hover {
-  background-color: #e6c200;
-}
-
-.delete {
-  background-color: #ff4444;
-  color: var(--white);
-  font-family: var(--khmer-font), sans-serif; /* Ensure font applies here */
-}
-
-.delete:hover {
-  background-color: #cc0000;
-}
-
-/* Modal Styles */
-.modal {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 1000;
-}
-
-.modal-content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: var(--white);
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: var(--shadow);
+  font-size: 2rem;
   text-align: center;
-  width: 80%;
-  max-width: 500px;
+  margin-bottom: 2rem;
+  color: var(--primary-color);
 }
 
-.close-button {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 20px;
-  cursor: pointer;
-  color: var(--text-color);
+.form-group {
+  margin-bottom: 1rem;
 }
 
-.modal-actions {
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
-  gap: 10px;
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
 }
 
-.confirm-button,
-.cancel-button {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: 600;
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--medium-gray);
+  border-radius: var(--radius);
   font-size: 1rem;
+  font-family: var(--khmer-font);
+  transition: var(--transition);
+  box-sizing: border-box; /* Ensure padding and border are included in the width */
 }
 
-.confirm-button {
-  background-color: #ff4444;
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--primary-color);
+  outline: none;
+}
+
+.login-btn {
+  background-color: var(--primary-color);
   color: var(--white);
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: var(--radius);
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: var(--transition);
+  width: 100%;
+  font-family: var(--khmer-font), sans-serif; /* Add this line */
 }
 
-.confirm-button:hover {
-  background-color: #cc0000;
-}
-
-.cancel-button {
-  background-color: #ddd;
-  color: var(--text-color);
-}
-
-.cancel-button:hover {
-  background-color: #ccc;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .main-container {
-    flex-direction: column;
-  }
-  .sidebar {
-    position: static;
-    width: 100%;
-    height: auto;
-    box-shadow: none;
-  }
-  .main-content {
-    margin-left: 0;
-    width: 100%;
-    box-sizing: border-box;
-  }
-  /* Make manage-section full width on mobile */
-  .manage-section {
-    width: 100%;
-    padding: 15px; /* Reduced padding for smaller screens */
-    box-sizing: border-box;
-  }
-
-  .manage-controls {
-    flex-direction: column;
-    align-items: stretch;
-    box-sizing: border-box;
-  }
-  .search-bar {
-    max-width: 100%;
-    box-sizing: border-box;
-  }
-  th,
-  td {
-    padding: 12px;
-    box-sizing: border-box;
-  }
-
-  /* Sidebar adjustments for mobile */
-  .sidebar {
-    width: 100%;
-    box-shadow: none;
-    padding-bottom: 0; /* Remove extra padding at the bottom */
-    box-sizing: border-box;
-  }
-
-  .sidebar-logo {
-    text-align: center; /* Center the logo on mobile */
-    padding: 15px;
-    box-sizing: border-box;
-  }
-
-  .sidebar-logo img {
-    width: 50px;
-    height: 50px;
-    margin-bottom: 5px;
-    box-sizing: border-box;
-  }
-
-  .sidebar-logo h2 {
-    font-size: 1.1rem;
-    box-sizing: border-box;
-  }
-
-  .sidebar ul {
-    margin-top: 0;
-    box-sizing: border-box;
-  }
-
-  .sidebar li {
-    margin-bottom: 0;
-    box-sizing: border-box;
-  }
-
-  .sidebar a {
-    padding: 12px 15px;
-    font-size: 0.9rem;
-    box-sizing: border-box;
-  }
-
-  .logout-button {
-    padding: 12px 15px;
-    font-size: 0.9rem;
-    box-sizing: border-box;
-  }
-  table {
-    display: block;
-    overflow-x: auto;
-    white-space: nowrap;
-  }
-}
-
-@media (max-width: 576px) {
-  table {
-    font-size: 0.9rem;
-  }
-
-  .action-button {
-    padding: 6px 12px;
-    font-size: 0.9rem;
-  }
-}
-
-/* Small Mobile Devices */
-@media (max-width: 480px) {
-  .sidebar-logo {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .sidebar-logo h2 {
-    margin-top: 5px;
-  }
-
-  .manage-controls {
-    flex-direction: column;
-  }
-
-  .search-bar {
-    width: 100%;
-  }
-
-  .search-bar input {
-    padding: 8px;
-    font-size: 0.8rem;
-  }
-
-  .search-button,
-  .add-button {
-    padding: 8px 12px;
-    font-size: 0.8rem;
-  }
-
-  th,
-  td {
-    padding: 8px;
-  }
-
-  .action-button {
-    padding: 5px 10px;
-    font-size: 0.75rem;
-  }
+.login-btn:hover {
+  background-color: var(--accent-color);
 }

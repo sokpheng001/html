@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="km">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="../images/rupp_logo.png" />
+    <title>គ្រប់គ្រងព័ត៌មាននិស្សិត - សាកលវិទ្យាល័យភូមិន្ទភ្នំពេញ</title>
+    <link rel="stylesheet" href="../css/dashboard.css" />
+    <link rel="stylesheet" href="../css/pop-up.css" />
+  </head>
+  <body>
+    <div class="main-container">
+      <aside class="sidebar">
+        <div class="sidebar-logo">
+          <img src="../images/rupp_logo.png" alt="រូបសញ្ញា RUPP" />
+          <h2>សាកលវិទ្យាល័យភូមិន្ទភ្នំពេញ</h2>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="/" class="active">គ្រប់គ្រងនិស្សិត</a></li>
+            <!-- <li>
+              <a style="cursor: pointer" onclick="deleteTab()"
+                >និស្សិតដែលបានលុប</a
+              >
+            </li> -->
+            <!-- <li><a style="cursor: pointer">ទំនាក់ទំនង</a></li> -->
+          </ul>
+        </nav>
+        <a class="logout-button" style="cursor: pointer;" onclick="logout()">ចាកចេញ</a>
+      </aside>
+      <main class="main-content">
+        <section id="manage" class="manage-section">
+          <div class="section-title">
+            <h2>គ្រប់គ្រងព័ត៌មាននិស្សិត</h2>
+          </div>
+
+          <div class="manage-controls">
+            <div class="search-bar">
+              <input
+                type="text"
+                name="search-input"
+                placeholder="ស្វែងរកនិស្សិត (ឈ្មោះ, លេខសម្គាល់)"
+              />
+              <button class="search-button">ស្វែងរក</button>
+            </div>
+            <button class="add-button primary-button">បន្ថែមនិស្សិតថ្មី</button>
+          </div>
+
+          <div class="student-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>លេខសម្គាល់ (ID)</th>
+                  <!-- id -->
+                  <th>ឈ្មោះខ្មែរ</th>
+                  <!-- khmer_name -->
+                  <th>ឈ្មោះឡាតាំង</th>
+                  <!-- latin_name -->
+                  <th>ឈ្មោះឪពុក</th>
+                  <!-- father_name -->
+                  <th>ឈ្មោះម្តាយ</th>
+                  <!-- mother_name -->
+                  <th>ថ្ងៃខែឆ្នាំកំណើត</th>
+                  <!-- date_of_birth -->
+                  <th>ទីកន្លែងកំណើត</th>
+                  <!-- place_of_birth -->
+                  <th>អ៊ីមែលដើម</th>
+                  <!-- original_email -->
+                  <th>អ៊ីមែលសាលា</th>
+                  <!-- school_email -->
+                  <th>លេខទូរស័ព្ទ</th>
+                  <!-- phone_number -->
+                  <th>ជំនាញ</th>
+                  <!-- major -->
+                  <th>គណនីផុតកំណត់</th>
+                  <!-- expired_date -->
+                  <th>ភេទ</th>
+                  <!-- gender -->
+                  <th>សកម្មភាព</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Add more sample rows as needed -->
+                <!-- generate by javascript  -->
+              </tbody>
+            </table>
+          </div>
+          <!-- all deleted student -->
+        </section>
+      </main>
+    </div>
+    <!-- Delete Confirmation Modal -->
+    <div id="deleteConfirmationModal" class="modal">
+      <div class="modal-content">
+        <span class="close-button" onclick="closeModal()">×</span>
+        <p>តើអ្នកពិតជាចង់លុបកំណត់ត្រានេះមែនទេ?</p>
+        <div class="modal-actions">
+          <button class="confirm-button" onclick="startDeleteStudent()">
+            លុប
+          </button>
+          <button class="cancel-button" onclick="closeModal()">បោះបង់</button>
+        </div>
+      </div>
+    </div>
+    <!-- -->
+    <script src="../js/delete-tab.js"></script>
+    <script src="../js/students-crud.js"></script>
+    <script src="../js/dashboard.js"></script>
+  </body>
+</html>

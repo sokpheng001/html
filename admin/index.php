@@ -1,9 +1,11 @@
 <?php
-  session_start();
-  // Check if the user is logged in by checking the session variable
-  if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== true) {
-      // Redirect to the login page if not logged in
-      header('Location: /admin/status/login.html');
-      exit();
-  }
+    // Get the current URL path
+    $requestUri = $_SERVER['REQUEST_URI'];
+    
+    // Check if the path is '/admin' or '/admin/'
+    if ($requestUri === '/admin' || $requestUri === '/admin/') {
+        // Redirect to '/admin/index.html'
+        header('Location: /admin/index.html');
+        exit(); // Always call exit after a header redirect to prevent further code execution
+    }
 ?>

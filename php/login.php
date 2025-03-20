@@ -43,13 +43,18 @@
 
             }
         } else {
-            echo "<script>alert('គណនីមិនមាន!'); window.location.href='../pages/login.html';</script>";
+            echo "<script>alert('គណនីមិនមាន!'); window.location.href='../pages/login.html';</script>"; 
+        //     unset($_COOKIE["student_email"]); // Remove the key from the $_COOKIE superglobal array
+        //     unset($_COOKIE["student_password"]); // Remove the key from the $_COOKIE superglobal array
+        //     unset($_COOKIE["student_uuid"]); // Remove the key from the $_COOKIE superglobal array
+        //     // echo "<script> window.location.href='../pages/login.html';</script>";
+
         }
 
         $stmt->close();
         $database_connection->close();
     } else {
-        header("Location: ../html/login.html");
+        header("Location: ../pages/login.html");
         exit();
     }
 ?>

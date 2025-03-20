@@ -7,7 +7,7 @@ function getAllStudents() {
 
   // Clear existing data before fetching new ones
   tableBody.innerHTML = "";
-  fetch("./php/services/student_service.php?read=true")
+  fetch("../php/services/student_service.php?read=true")
     .then((response) => {
       if (!response.ok) {
         console.log("Network response was not ok");
