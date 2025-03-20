@@ -2,9 +2,9 @@
     $env_location =  __DIR__ . '/../../.env';
     $env = parse_ini_file($env_location);
     // Check if the file is loaded correctly
-    if ($env === false) {
-        die("Failed to load environment variables from the .env file.");
-    }
+    // if ($env === false) {
+    //     die("Failed to load environment variables from the .env file.");
+    // }
     //
     
     $db_servername= $env['DB_HOST'];
