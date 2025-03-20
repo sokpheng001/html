@@ -42,3 +42,5 @@ exportButton.addEventListener("click", function () {
   // Remove the link after the click
   document.body.removeChild(link);
 });
+
+// search student by id
