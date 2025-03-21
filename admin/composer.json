@@ -1,0 +1,16 @@
+{
+    "name": "kimchansokpheng/admin",
+    "autoload": {
+        "psr-4": {
+            "Kimchansokpheng\\Admin\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "sokpheng001"
+        }
+    ],
+    "require": {
+        "phpoffice/phpspreadsheet": "^4.1"
+    }
+}

@@ -7,6 +7,7 @@
     <title>គ្រប់គ្រងព័ត៌មាននិស្សិត - សាកលវិទ្យាល័យភូមិន្ទភ្នំពេញ</title>
     <link rel="stylesheet" href="../css/dashboard.css" />
     <link rel="stylesheet" href="../css/pop-up.css" />
+    <link rel="stylesheet" href="../css/update-modal.css" />
   </head>
   <body>
     <div class="main-container">
@@ -26,8 +27,11 @@
             <!-- <li><a style="cursor: pointer">ទំនាក់ទំនង</a></li> -->
           </ul>
         </nav>
-        <a class="logout-button" style="cursor: pointer;" onclick="logout()">ចាកចេញ</a>
+        <a class="logout-button" style="cursor: pointer" onclick="logout()"
+          >ចាកចេញ</a
+        >
       </aside>
+      <!--  -->
       <main class="main-content">
         <section id="manage" class="manage-section">
           <div class="section-title">
@@ -39,14 +43,21 @@
               <input
                 type="text"
                 name="search-input"
-                placeholder="ស្វែងរកនិស្សិត (ឈ្មោះ, លេខសម្គាល់)"
+                placeholder="ស្វែងរកនិស្សិត (លេខសម្គាល់)"
+                id="search-input"
               />
-              <button class="search-button">ស្វែងរក</button>
+              <button class="search-button" onclick="searchStudentById()">
+                ស្វែងរក
+              </button>
             </div>
-            <button class="add-button primary-button">បន្ថែមនិស្សិតថ្មី</button>
+            <!-- <button class="add-button primary-button">បន្ថែមនិស្សិតថ្មី</button> -->
+            <button class="excel-export-button primary-button">
+              ទាញយកទិន្នន័យជា Excel
+            </button>
           </div>
 
           <div class="student-table">
+            <!--  -->
             <table>
               <thead>
                 <tr>
@@ -80,6 +91,16 @@
                 </tr>
               </thead>
               <tbody>
+                <!-- Loading Spinner -->
+                <tr id="loading-row" style="display: none">
+                  <td colspan="14" style="text-align: center">
+                    <div id="loading-spinner">
+                      <!-- <div class="spinner">កំពុងទាញយកទិន្នន័យ...</div> -->
+                      <div class="spinner"></div>
+                    </div>
+                  </td>
+                </tr>
+
                 <!-- Add more sample rows as needed -->
                 <!-- generate by javascript  -->
               </tbody>
@@ -89,6 +110,131 @@
         </section>
       </main>
     </div>
+    <!-- Update Student Modal -->
+    <div class="modal" id="registerModal">
+  <div class="modal-content">
+    <span class="close-button" onclick="closeModal()">×</span>
+    <h3>Update Student Information</h3>
+    <form id="updateStudentForm">
+      <div class="form-group">
+        <label for="khmer-name">ឈ្មោះខ្មែរ:</label>
+        <input type="text" id="khmer-name" name="khmer-name" required />
+      </div>
+      <div class="form-group">
+        <label for="latin-name">ឈ្មោះឡាតាំង:</label>
+        <input type="text" id="latin-name" name="latin-name" required />
+      </div>
+      <div class="form-group">
+        <label for="father-name">ឈ្មោះឪពុក:</label>
+        <input type="text" id="father-name" name="father-name" required />
+      </div>
+      <div class="form-group">
+        <label for="mother-name">ឈ្មោះម្តាយ:</label>
+        <input type="text" id="mother-name" name="mother-name" required />
+      </div>
+      <div class="form-group">
+        <label for="date-of-birth">ថ្ងៃខែឆ្នាំកំណើត:</label>
+        <input type="date" id="date-of-birth" name="date-of-birth" required />
+      </div>
+      <div class="form-group">
+        <label for="place-of-birth">ទីកន្លែងកំណើត:</label>
+        <input type="text" id="place-of-birth" name="place-of-birth" required />
+      </div>
+      <div class="form-group">
+        <label for="school-email">អ៊ីមែល:</label>
+        <input type="email" id="school-email" name="school-email" required />
+      </div>
+      <div class="form-group">
+        <label for="phone-number">លេខទូរស័ព្ទ:</label>
+        <input type="tel" id="phone-number" name="phone-number" required />
+      </div>
+      <div class="form-group">
+        <label for="major">មុខវិជ្ជា:</label>
+        <input type="text" id="major" name="major" required />
+      </div>
+      <div class="form-group">
+        <label for="gender">ភេទ:</label>
+        <select id="gender" name="gender">
+          <option value="male">ប្រុស</option>
+          <option value="female">ស្រី</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="expired_date">គណនីផុតកំណត់:</label>
+        <input type="date" id="expired_date" name="expired_date" required />
+      </div>
+      <div>
+        <button type="submit" class="confirm-button">Confirm</button>
+        <button type="button" class="cancel-button" onclick="closeModal()">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Modal Structure -->
+<div class="modal" id="registerModal">
+  <div class="modal-content">
+    <span class="close-button" onclick="closeModal()">×</span>
+    <h3>Update Student Information</h3>
+    <form id="updateStudentForm">
+      <div class="form-group">
+        <label for="khmer-name">ឈ្មោះខ្មែរ:</label>
+        <input type="text" id="khmer-name" name="khmer-name" required />
+      </div>
+      <div class="form-group">
+        <label for="latin-name">ឈ្មោះឡាតាំង:</label>
+        <input type="text" id="latin-name" name="latin-name" required />
+      </div>
+      <div class="form-group">
+        <label for="father-name">ឈ្មោះឪពុក:</label>
+        <input type="text" id="father-name" name="father-name" required />
+      </div>
+      <div class="form-group">
+        <label for="mother-name">ឈ្មោះម្តាយ:</label>
+        <input type="text" id="mother-name" name="mother-name" required />
+      </div>
+      <div class="form-group">
+        <label for="date-of-birth">ថ្ងៃខែឆ្នាំកំណើត:</label>
+        <input type="date" id="date-of-birth" name="date-of-birth" required />
+      </div>
+      <div class="form-group">
+        <label for="place-of-birth">ទីកន្លែងកំណើត:</label>
+        <input type="text" id="place-of-birth" name="place-of-birth" required />
+      </div>
+      <div class="form-group">
+        <label for="school-email">អ៊ីមែល:</label>
+        <input type="email" id="school-email" name="school-email" required />
+      </div>
+      <div class="form-group">
+        <label for="phone-number">លេខទូរស័ព្ទ:</label>
+        <input type="tel" id="phone-number" name="phone-number" required />
+      </div>
+      <div class="form-group">
+        <label for="major">មុខវិជ្ជា:</label>
+        <input type="text" id="major" name="major" required />
+      </div>
+      <div class="form-group">
+        <label for="gender">ភេទ:</label>
+        <select id="gender" name="gender">
+          <option value="male">ប្រុស</option>
+          <option value="female">ស្រី</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="expired_date">គណនីផុតកំណត់:</label>
+        <input type="date" id="expired_date" name="expired_date" required />
+      </div>
+      <div>
+        <button type="submit" class="confirm-button">Confirm</button>
+        <button type="button" class="cancel-button" onclick="closeModal()">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Trigger Button (for demonstration) -->
+<button onclick="openModal()">Open Register Modal</button>
+
     <!-- Delete Confirmation Modal -->
     <div id="deleteConfirmationModal" class="modal">
       <div class="modal-content">
@@ -106,5 +252,6 @@
     <script src="../js/delete-tab.js"></script>
     <script src="../js/students-crud.js"></script>
     <script src="../js/dashboard.js"></script>
+    <script src="./update-modal.js"></script>
   </body>
 </html>

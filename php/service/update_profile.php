@@ -38,7 +38,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["profile-photo"]) && i
             if (!$conn) {
                 die("Connection failed: " . mysqli_connect_error());
             }
-
             // Prepare and execute the SQL statement
             if ($stmt = mysqli_prepare($conn, $sql)) {
                 mysqli_stmt_bind_param($stmt, "ss", $filePath, $uuid);

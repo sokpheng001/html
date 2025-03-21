@@ -8,7 +8,6 @@
         $db_password,
         $database_name,
     );
-
     // Check connection
     if (!$database_connection) {
         die("Connection failed: " . mysqli_connect_error());

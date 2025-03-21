@@ -56,7 +56,7 @@ function getAllStudents() {
           <td>${user.expired_date}</td>
           <td>${user.gender}</td>
           <td>
-            <button class="action-button edit">កែ</button>
+            <button class="action-button edit" onclick="openUpdateModal({})">កែ</button>
             <button class="action-button delete" onclick="deleteRecord('${
               user.stu_id
             }')">លុប</button>
@@ -71,6 +71,151 @@ function getAllStudents() {
       checkIfNoData("error");
     });
 }
+// delete data in api
+// ----------------------------------------------------------------
+function deleteRecord(stu_id) {
+  localStorage.setItem("stu_id", stu_id);
+  openModal();
+
+  // alert("Record deleted (This is a placeholder action).");
+  // deleteUser(stu_id);
+}
+// search student by id
+let debounceTimeout;
+
+function searchStudentById() {
+  const studentId = document.getElementById("search-input").value.trim();
+  const tableBody = document.querySelector(".student-table tbody");
+
+  // Clear table if no input or input is empty
+  if (!studentId) {
+    tableBody.innerHTML = ""; // Clear table if search field is empty
+    return;
+  }
+
+  // Check if table body exists
+  if (!tableBody) {
+    console.error("Error: Table body not found!");
+    return;
+  }
+  // Fetch all students if input is empty
+  if (studentId == "") {
+    window.location.reload();
+    return;
+  }
+
+  // Clear the table before fetching new data
+  tableBody.innerHTML = "";
+
+  // Debounce: Only make request after 300ms of inactivity
+  clearTimeout(debounceTimeout);
+
+  debounceTimeout = setTimeout(() => {
+    fetch(`../php/services/search_student_by_id.php?search=${studentId}`)
+      .then((response) => {
+        if (!response.ok) {
+          console.log("Network response was not ok");
+          return;
+        }
+        return response.json();
+      })
+      .then((data) => {
+        // Handle case where no data is returned
+        if (data.error) {
+          checkIfNoData("empty");
+          return;
+        }
+        // Truncate email if too long
+        const truncateEmail = (email) =>
+          email.length > 5 ? email.slice(0, 5) + "..." : email;
+
+        // Populate table with the found student data
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${data.stu_id}</td>
+          <td>${data.khmer_name}</td>
+          <td>${data.latin_name}</td>
+          <td>${data.father_name}</td>
+          <td>${data.mother_name}</td>
+          <td>${data.date_of_birth}</td>
+          <td>${data.place_of_birth}</td>
+          <td>
+            <span style="cursor: pointer" class="email-display" data-email="${
+              data.original_email
+            }">
+              ${truncateEmail(data.original_email)}
+            </span>
+          </td>
+          <td>
+            <span style="cursor: pointer" class="email-display" data-email="${
+              data.school_email
+            }">
+              ${truncateEmail(data.school_email)}
+            </span>
+          </td>
+          <td>${data.phone_number}</td>
+          <td>${data.major}</td>
+          <td>${data.expired_date}</td>
+          <td>${data.gender}</td>
+          <td>
+            <button class="action-button edit" onclick="openUpdateModal({${data}})">កែ</button>
+            <button class="action-button delete" onclick="deleteRecord('${
+              data.stu_id
+            }')">លុប</button>
+          </td>
+        `;
+
+        tableBody.appendChild(row);
+      })
+      .catch((error) => {
+        console.error("Error fetching student data:", error);
+        checkIfNoData("error");
+      });
+  }, 300); // Adjust debounce time if needed (300ms)
+}
+
+// ✅ Add event listener for real-time search
+const searchInput = document.getElementById("search-input");
+
+// ✅ Listen for "input" event + "keyup" for backspace detection
+searchInput.addEventListener("input", searchStudentById);
+searchInput.addEventListener("keyup", (event) => {
+  if (event.key === "Backspace" && searchInput.value.trim() === "") {
+    // console.log("Backspace cleared input, fetching all students...");
+    getAllStudents();
+  }
+});
+
+// update modal
+
+// Function to open the update modal and fill in the form with student data
+function openUpdateModal(student) {
+  console.log(student);
+  // Fill the form with the student's data
+  // document.getElementById("stu_id").value = student.stu_id;
+  // document.getElementById("khmer_name").value = student.khmer_name;
+  // document.getElementById("latin_name").value = student.latin_name;
+  // document.getElementById("father_name").value = student.father_name;
+  // document.getElementById("mother_name").value = student.mother_name;
+  // document.getElementById("date_of_birth").value = student.date_of_birth;
+  // document.getElementById("place_of_birth").value = student.place_of_birth;
+  // document.getElementById("original_email").value = student.original_email;
+  // document.getElementById("school_email").value = student.school_email;
+  // document.getElementById("phone_number").value = student.phone_number;
+  // document.getElementById("major").value = student.major;
+  // document.getElementById("expired_date").value = student.expired_date;
+  // document.getElementById("gender").value = student.gender;
+
+  // Show the modal
+  document.getElementById("updateStudentModal").style.display = "flex";
+}
+
+// Function to close the modal
+function closeUpdateModal() {
+  document.getElementById("updateStudentModal").style.display = "none";
+}
+
+// ended of search
 
 function checkIfNoData(status) {
   const tableBody = document.querySelector(".student-table tbody");
@@ -111,15 +256,7 @@ window.onclick = function (event) {
   }
 };
 
-// delete data in api
-// ----------------------------------------------------------------
-function deleteRecord(stu_id) {
-  localStorage.setItem("stu_id", stu_id);
-  openModal();
-
-  // alert("Record deleted (This is a placeholder action).");
-  // deleteUser(stu_id);
-}
+//
 
 function startDeleteStudent() {
   let stu_id = localStorage.getItem("stu_id");
@@ -150,7 +287,9 @@ function deleteUser(student_id) {
     });
   window.location.reload();
 }
+// update
 
+//
 function removeStudentRow(stu_id) {
   // Find the row with the corresponding stu_id and remove it from the table
   const rows = document.querySelectorAll(".student-table tbody tr");
