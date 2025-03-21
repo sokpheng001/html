@@ -261,6 +261,7 @@ tr:hover {
   background-color: #ffd700;
   color: var(--text-color);
   font-family: var(--khmer-font), sans-serif; /* Ensure font applies here */
+  cursor: not-allowed;
 }
 
 .edit:hover {
