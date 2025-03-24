@@ -25,3 +25,7 @@ CREATE TABLE admins(
     email VARCHAR(255) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL
 );
+
+INSERT INTO admins (uuid, email, password) 
+VALUES ('67dc4e3d90aeb1.56657260', 'sokpheng123@gmail.com', 
+'%242y%2412%24l97a17kO9PN8EitufTl9euK8SUxLZVhuR%2F7TQnPal1f4KIEc.xm62');
